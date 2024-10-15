@@ -5,8 +5,8 @@ import Path from './assets/Path.svg'
 
 function Startpage() {
   return (
-    <div className="min-h-screen flex flex-col">
-      <main className="flex-grow mt-12">
+    <div className="min-h-screen flex flex-col overflow-x-hidden">
+      <main className="flex-grow mt-16 mb-16">
         <div className="container relative w-full max-w-4xl  px-4 py-8 md:py-16">
           <h2 className="text-xl sm:text-2xl md:text-3xl text-blue-900 font-bold mb-4">
             Ihr Weg durch die Pflege - Schritt für Schritt
@@ -24,9 +24,8 @@ function Startpage() {
           </div>
           
           <div 
-          className="relative flex items-center bg-cover bg-center h-screen z-0"
+          className="relative flex items-center bg-cover bg-center min-h-[700px] z-0"
             style={{
-            minHeight: "700px",
             backgroundImage: `url(${Path})`,
             backgroundRepeat: "no-repeat",
             backgroundPosition: "center",
