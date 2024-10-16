@@ -1,9 +1,13 @@
 import React, { useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 
 function Slidepage() {
+  const navigate = useNavigate();
+  const handleBack = () => {
+    navigate(-1);
+  };
 
-const [currentSlide, setCurrentSlide] = useState(0);
+  const [currentSlide, setCurrentSlide] = useState(0);
   const slides = [
     <div key="slide-1">
       <div className="border border-blue-900 bg-blue-100 shadow-lg rounded-lg p-6">
@@ -55,7 +59,13 @@ const [currentSlide, setCurrentSlide] = useState(0);
   };
   return (
     <div className="p-4 md:p-16">
-      <h2 className="text-lg font-semibold text-blue-900 mt-4 mb-4 text-center">
+      <button
+        className="bg-gray-300 text-gray-800 mt-16 py-2 px-4 rounded-md shadow-md hover:bg-gray-400 transition duration-200 ease-in-out"
+        onClick={handleBack}
+      >
+        Zurück
+      </button>
+      <h2 className="text-lg font-semibold text-blue-900 mt-8 mb-4 text-center">
         Erkennung von Pflegebedürftigkeit
       </h2>
       <div className="flex flex-col justify-center items-center">
