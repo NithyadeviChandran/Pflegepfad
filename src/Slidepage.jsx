@@ -56,6 +56,20 @@ function Slidepage() {
       <h2 className="text-lg font-semibold text-blue-900 mt-4 mb-4 text-center">
         Erkennung von Pflegebedürftigkeit
       </h2>
+      <div className="flex flex-col justify-center items-center">
+        <div className="w-full max-w-3xl">{slides[currentSlide]}</div>
+        <div className="flex justify-center mt-6 space-x-2">
+          {slides.map((_, index) => (
+            <button
+              key={index}
+              className={`h-3 w-3 rounded-full ${
+                currentSlide === index ? "bg-blue-500" : "bg-gray-300"
+              }`}
+              onClick={() => handleSlideChange(index)}
+            ></button>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
