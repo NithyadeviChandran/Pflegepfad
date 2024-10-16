@@ -1,9 +1,15 @@
-import React from "react";
+import React, {useState} from "react";
 import {Link} from "react-router-dom"
 import Frontpage from './assets/Frontpage.png'
 import Path from './assets/Path.svg'
+import Modal from './Modal'
 
 function Startpage() {
+  const [isModalOpen, setModalOpen] = useState(false);
+
+  const openModal = () => setModalOpen(true);
+  const closeModal = () => setModalOpen(false);
+
   return (
     <div className="min-h-screen flex flex-col overflow-x-hidden">
       <main className="flex-grow mt-16 mb-16">
@@ -32,15 +38,17 @@ function Startpage() {
             backgroundSize: "contain",
         }}
         >
-   
+
               <Link
-        to="/blank"
+        onClick={openModal}
         className="absolute underline text-blue-900 text-sm sm:text-lg md:text-xl sm:w-auto w-full"
         style={{ top: '0.1%', left: '13%' }} 
       >
        <span className="block sm:inline">Erkennung von</span> 
        <span className="block sm:inline">Pflegebedürftigkeit</span>
       </Link>
+      <Modal isOpen={isModalOpen} onClose={closeModal} />
+     
       <Link
         to="/blank"
         className="absolute underline text-blue-900 text-sm sm:text-lg md:text-xl sm:w-auto w-full"

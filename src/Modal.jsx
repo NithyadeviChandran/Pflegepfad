@@ -1,14 +1,16 @@
-import React, { useState } from "react";
-import slidepage from "./Slidepage";
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import slidepage from './Slidepage'
 
-function Modal() {
-  const [isOpen, onClose] = useState(0);
+function Modal({ isOpen, onClose }) {
+  const navigate = useNavigate();
 
   const handleClick = () => {
-    window.location.href = "/slidepage";
+    onClose();
+    navigate("/slidepage"); 
   };
 
-  if (!isOpen) return null;
+  if (!isOpen) return null; 
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
@@ -30,13 +32,13 @@ function Modal() {
             className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
             onClick={handleClick}
           >
-           Mehr Erfahren
+            Mehr Erfahren
           </button>
           <button
             className="bg-gray-300 text-gray-800 py-2 px-4 rounded hover:bg-gray-400"
             onClick={onClose}
           >
-            Close
+            Schließen
           </button>
         </div>
       </div>
