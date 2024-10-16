@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 
-const [currentSlide, setCurrentSlide] = useState(0);
+
 function Slidepage() {
+
+const [currentSlide, setCurrentSlide] = useState(0);
   const slides = [
     <div key="slide-1">
       <div className="border border-blue-900 bg-blue-100 shadow-lg rounded-lg p-6">
-        <h3 className="text-lg font-semibold text-blue-900">
+        <h3 className="text-lg font-semibold mb-2 text-blue-900">
           Wie erkenne ich Pflegebedürftigkeit?
         </h3>
         <p className="text-base font-sans text-gray-900">
@@ -20,7 +22,7 @@ function Slidepage() {
     </div>,
     <div key="slide-2">
       <div className="border border-blue-900 bg-blue-100 shadow-lg rounded-lg p-6">
-        <h3 className="text-lg font-semibold text-blue-900">
+        <h3 className="text-lg font-semibold mb-2 text-blue-900">
           Welche Anzeichen gibt es?
         </h3>
         <p className="text-base font-sans text-gray-900">
@@ -34,7 +36,7 @@ function Slidepage() {
     </div>,
     <div key="slide-3">
       <div className="border border-blue-900 bg-blue-100 shadow-lg rounded-lg p-6">
-        <h3 className="text-lg font-semibold text-blue-900">
+        <h3 className="text-lg font-semibold mb-2 text-blue-900">
           Wer kann helfen, das festzustellen?
         </h3>
         <p className="text-base font-sans text-gray-900">
