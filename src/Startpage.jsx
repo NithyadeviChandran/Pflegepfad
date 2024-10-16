@@ -8,7 +8,7 @@ function Startpage() {
     <div className="min-h-screen flex flex-col overflow-x-hidden">
       <main className="flex-grow mt-16 mb-16">
         <div className="container relative w-full max-w-4xl  px-4 py-8 md:py-16">
-          <h2 className="text-xl sm:text-2xl md:text-3xl text-blue-900 font-bold mb-4">
+          <h2 className="text-xl text-center sm:text-2xl md:text-3xl text-blue-900 font-bold mb-4">
             Ihr Weg durch die Pflege - Schritt für Schritt
           </h2>
           <div className="flex justify-between mx-auto mt-2 mb-6 border rounded border-blue-900 p-2 bg-blue-100 w-full max-w-md md:max-w-2xl">
