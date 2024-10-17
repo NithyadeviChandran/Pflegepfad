@@ -1,14 +1,55 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import {Link} from "react-router-dom"
 import Frontpage from './assets/Frontpage.png'
 import Path from './assets/Path.svg'
 import Modal from './Modal'
+import { FaChevronDown, FaChevronUp } from 'react-icons/fa'; 
 
 function Startpage() {
+
   const [isModalOpen, setModalOpen] = useState(false);
 
   const openModal = () => setModalOpen(true);
   const closeModal = () => setModalOpen(false);
+  const [isAtBottom, setIsAtBottom] = useState(false);
+
+  
+  const handleScroll = () => {
+    const windowHeight = window.innerHeight;
+    const documentHeight = document.documentElement.scrollHeight;
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+
+
+    if (windowHeight + scrollTop >= documentHeight - 50) {
+      setIsAtBottom(true);
+    } else {
+      setIsAtBottom(false);
+    }
+
+  };
+
+  const handleScrollToggle = () => {
+    if (isAtBottom) {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
+    } else {
+      window.scrollTo({
+        top: window.innerHeight,
+        behavior: 'smooth',
+      });
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
 
   return (
     <div className="min-h-screen flex flex-col overflow-x-hidden">
@@ -68,7 +109,7 @@ function Startpage() {
       <Link
         to="/blank"
         className="absolute underline text-blue-900 text-sm sm:text-lg md:text-xl sm:w-auto w-full"
-        style={{ top: '37%', left: '20%' }} 
+        style={{ top: '37%', left: '60%' }} 
       >
        <span className="block sm:inline">Unterstützung</span> 
        <span className="block sm:inline">im Alltag</span>
@@ -76,7 +117,7 @@ function Startpage() {
       <Link
         to="/blank"
         className="absolute underline text-blue-900 text-sm sm:text-lg md:text-xl sm:w-auto w-full"
-        style={{ top: '47%', left: '47%' }} 
+        style={{ top: '45%', left: '8%' }} 
       >
        <span className="block sm:inline">Finanzielle</span> 
        <span className="block sm:inline">Unterstützung</span>
@@ -98,11 +139,27 @@ function Startpage() {
        <span className="block sm:inline">Umgang mit</span> 
        <span className="block sm:inline">Herausforderungen</span>
       </Link>
+      </div>
      
-          </div>
-        </div>
-      </main>
+       <div className="fixed bottom-16 left-1/2 transform -translate-x-1/2  z-50">
+        {isAtBottom ? (
+          <FaChevronUp
+            size={24}
+            className="text-black-500 cursor-pointer"
+            onClick={handleScrollToggle}  // Click to scroll to top
+          />
+        ) : (
+          <FaChevronDown
+            size={24}
+            className="text-black-500 cursor-pointer"
+            onClick={handleScrollToggle}  // Click to scroll down
+          />
+        )}
+      </div>
     </div>
+   
+       </main>
+      </div>
   );
 }
 
