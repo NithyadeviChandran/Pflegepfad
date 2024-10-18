@@ -9,7 +9,9 @@ function Header() {
         <h1 className="text-2xl md:text-4xl font-sans text-gray-100 text-center flex-1">
           PflegePfad Bayern
         </h1>
+ 
       </div>
+      <h4 className="text-xs md:text-4xl font-sans text-gray-100 text-center flex-1">Der Wegbegleiter für Betroffenen und Interessierte</h4>
     </div>
   );
 }
