@@ -59,7 +59,7 @@ function Startpage() {
               Ihrer Pflegetätigkeit als Angehöriger aussehen könnte:
             </p>
             <img
-              className="h-24 fill-blue-900 bg-blue-100"
+              className="h-24 p-2 fill-blue-900 bg-blue-100"
               src={Frontpage}
               alt="Description"
             />

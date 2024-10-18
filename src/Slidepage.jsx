@@ -60,12 +60,12 @@ function Slidepage() {
   return (
     <div className="p-4 md:p-16">
       <button
-        className="bg-gray-300 text-gray-800 mt-16 py-2 px-4 rounded-md shadow-md hover:bg-gray-400 transition duration-200 ease-in-out"
+        className="bg-gray-300 text-gray-800 mt-20 py-2 px-4 rounded-md shadow-md hover:bg-gray-400 transition duration-200 ease-in-out"
         onClick={handleBack}
       >
         Zurück
       </button>
-      <h2 className="text-lg font-semibold text-blue-900 mt-8 mb-4 text-center">
+      <h2 className="text-lg font-semibold text-blue-900 mt-4 mb-4 text-center">
         Erkennung von Pflegebedürftigkeit
       </h2>
       <div className="flex flex-col justify-center items-center">
