@@ -1,5 +1,4 @@
 import React from "react";
-import image from "./assets/image.png";
 import Lo from "./assets/Lo.png";
 
 function Header() {
@@ -12,7 +11,7 @@ function Header() {
         </h1>
  
       </div>
-      <h4 className="text-xs md:text-4xl font-sans text-gray-100 text-center flex-1">Der Wegbegleiter für Betroffenen und Interessierte</h4>
+      <h4 className="text-xs md:text-4xl font-sans text-gray-100 text-center flex-1">Der Wegweiser für Betroffene und Interessierte</h4>
     </div>
   );
 }

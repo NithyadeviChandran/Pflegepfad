@@ -1,15 +1,28 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import Frontpage from "./assets/Frontpage.png";
+import { Link, useNavigate } from "react-router-dom";
+import { useSlideData } from "./SlideContext";
+import image from "./assets/carepic.png";
 import Path from "./assets/Path.svg";
 import Modal from "./Modal";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 
 function Startpage() {
-  const [isModalOpen, setModalOpen] = useState(false);
+  const [activeModal, setActiveModal] = useState(null);
+  const navigate = useNavigate();
+  const { setSlideData } = useSlideData();
 
-  const openModal = () => setModalOpen(true);
-  const closeModal = () => setModalOpen(false);
+  const openModal = (modalId) => setActiveModal(modalId);
+  const closeModal = () => setActiveModal(null);
+
+  const handleNavigateToSlide = (slideData) => {
+    setSlideData(slideData);
+    closeModal();
+    navigate("/slidepage");
+  };
+
+  // const [isModalOpen, setModalOpen] = useState(false);
+  // const openModal = () => setModalOpen(true);
+  // const closeModal = () => setModalOpen(false);
   const [isAtBottom, setIsAtBottom] = useState(false);
 
   const handleScroll = () => {
@@ -50,17 +63,20 @@ function Startpage() {
     <div className="min-h-screen flex flex-col overflow-x-hidden">
       <main className="flex-grow mt-12 mb-16">
         <div className="container relative w-full max-w-4xl  px-4 py-8 md:py-16">
-          <h2 className="text-xl text-center sm:text-2xl md:text-3xl text-blue-900 font-bold mb-4">
-            {/* Ihr Weg durch die Pflege - Schritt für Schritt */}
-          </h2>
-          <div className="flex justify-between mx-auto mb-6 border rounded border-blue-900 p-2 bg-blue-100 w-full max-w-md md:max-w-2xl">
-            <p className="whitespace-normal text-blue-900 font-sans">
-              Die Reise geht los! Hier sehen Sie, wie ein beispielhafter Verlauf
-              Ihrer Pflegetätigkeit als Angehöriger aussehen könnte:
-            </p>
+          <div className="flex justify-between mx-auto mb-6 border rounded border-blue-200 p-2 bg-blue-100 w-full max-w-md md:max-w-2xl">
+            <div className="flex flex-col justify-center flex-1">
+              <h2 className="text-lg text-center sm:text-2xl md:text-3xl text-blue-900 font-bold mb-2">
+                Die Reise geht los!
+              </h2>
+              <p className="whitespace-normal text-blue-900 font-sans">
+                Hier sehen Sie, wie ein beispielhafter Verlauf von Pflege
+                aussehen könnte:
+              </p>
+            </div>
+
             <img
               className="h-24 p-2 fill-blue-900 bg-blue-100"
-              src={Frontpage}
+              src={image}
               alt="Description"
             />
           </div>
@@ -75,64 +91,534 @@ function Startpage() {
             }}
           >
             <Link
-              onClick={openModal}
+              onClick={() => openModal("modal1")}
               className="absolute underline text-blue-900 text-sm sm:text-lg md:text-xl sm:w-auto w-full"
               style={{ top: "0.1%", left: "13%" }}
             >
               <span className="block sm:inline">Erkennung von</span>
               <span className="block sm:inline">Pflegebedürftigkeit</span>
             </Link>
-            <Modal isOpen={isModalOpen} onClose={closeModal} />
+            <Modal
+              isOpen={activeModal === "modal1"}
+              onClose={closeModal}
+              title="Erkennung von Pflegebedürftigkeit"
+              content={
+                <ul className="list-disc pl-5 space-y-2 text-gray-700">
+                  <li>Wie erkenne ich Pflegebedürftigkeit?</li>
+                  <li>Welche Anzeichen gibt es?</li>
+                  <li>Wer kann helfen, das festzustellen?</li>
+                </ul>
+              }
+              actionLabel="Mehr Erfahren"
+              onAction={() =>
+                handleNavigateToSlide({
+                  title: "Erkennung von Pflegebedürftigkeit",
+                  slides: [
+                    <div key="slide-1">
+                      <div className="border border-blue-900 bg-blue-100 shadow-lg rounded-lg p-6">
+                        <h3 className="text-lg font-semibold mb-2 text-blue-900">
+                          Wie erkenne ich Pflegebedürftigkeit?
+                        </h3>
+                        <p className="text-base font-sans text-gray-900">
+                          Pflegebedürftigkeit erkennst du daran, dass
+                          alltägliche Aktivitäten wie Anziehen, Essen oder
+                          Körperpflege zunehmend schwerfallen. Auch
+                          Veränderungen im Verhalten, wie Vergesslichkeit oder
+                          Orientierungsprobleme, sind oft erste Anzeichen. Es
+                          ist wichtig, darauf zu achten, ob sich die Mobilität
+                          oder die geistige Verfassung einer Person
+                          verschlechtert.
+                        </p>
+                      </div>
+                    </div>,
+                    <div key="slide-2">
+                      <div className="border border-blue-900 bg-blue-100 shadow-lg rounded-lg p-6">
+                        <h3 className="text-lg font-semibold mb-2 text-blue-900">
+                          Welche Anzeichen gibt es?
+                        </h3>
+                        <p className="text-base font-sans text-gray-900">
+                          Typische Anzeichen sind körperliche Einschränkungen,
+                          zum Beispiel beim Gehen oder Aufstehen, sowie
+                          Schwierigkeiten im Umgang mit dem Haushalt.
+                          Vernachlässigte Hygiene oder Probleme beim Essen und
+                          Trinken sind ebenfalls Warnsignale. Auch emotionale
+                          Veränderungen wie Verwirrung oder Apathie können auf
+                          Pflegebedürftigkeit hindeuten.
+                        </p>
+                      </div>
+                    </div>,
+                    <div key="slide-3">
+                      <div className="border border-blue-900 bg-blue-100 shadow-lg rounded-lg p-6">
+                        <h3 className="text-lg font-semibold mb-2 text-blue-900">
+                          Wer kann helfen, das festzustellen?
+                        </h3>
+                        <p className="text-base font-sans text-gray-900">
+                          Pflegeberater, Hausärzte und Pflegedienste können eine
+                          erste Einschätzung vornehmen. Sie bieten Beratung und
+                          Unterstützung bei der Beurteilung des Pflegebedarfs
+                          an. Der Medizinische Dienst der Krankenkassen führt
+                          eine offizielle Begutachtung durch, um den Pflegegrad
+                          zu ermitteln.
+                        </p>
+                      </div>
+                    </div>,
+                  ],
+                })
+              }
+            />
 
             <Link
-              to="/blank"
+              onClick={() => openModal("modal2")}
               className="absolute underline text-blue-900 text-sm sm:text-lg md:text-xl sm:w-auto w-full"
               style={{ top: "10%", left: "50%" }}
             >
               <span className="block sm:inline">Pflegegrad</span>
               <span className="block sm:inline">Einstufung</span>
             </Link>
+            <Modal
+              isOpen={activeModal === "modal2"}
+              onClose={closeModal}
+              title="Pflegegrad Einstufung"
+              content={
+                <ul className="list-disc pl-5 space-y-2 text-gray-700">
+                  <li>Wie beantrage ich einen Pflegegrad?</li>
+                  <li>Welche Unterlagen brauche ich?</li>
+                  <li>Wie lange dauert die Bearbeitung?</li>
+                </ul>
+              }
+              actionLabel="Mehr Erfahren"
+              onAction={() =>
+                handleNavigateToSlide({
+                  title: "Pflegegrad Einstufung",
+                  slides: [
+                    <div key="slide-1">
+                      <div className="border border-blue-900 bg-blue-100 shadow-lg rounded-lg p-6">
+                        <h3 className="text-lg font-semibold mb-2 text-blue-900">
+                          Wie beantrage ich einen Pflegegrad?
+                        </h3>
+                        <p className="text-base font-sans text-gray-900">
+                          Den Pflegegrad beantragst du bei der Pflegekasse der
+                          Krankenkasse der pflegebedürftigen Person. Der Antrag
+                          kann formlos gestellt werden, meist per Brief oder
+                          Anruf. Anschließend erfolgt eine Begutachtung durch
+                          den Medizinischen Dienst, um den Grad der
+                          Pflegebedürftigkeit festzustellen.
+                        </p>
+                      </div>
+                    </div>,
+                    <div key="slide-2">
+                      <div className="border border-blue-900 bg-blue-100 shadow-lg rounded-lg p-6">
+                        <h3 className="text-lg font-semibold mb-2 text-blue-900">
+                          Welche Unterlagen brauche ich?
+                        </h3>
+                        <p className="text-base font-sans text-gray-900">
+                          Für den Antrag benötigst du ärztliche Befunde,
+                          Krankenhausberichte und eventuell Berichte von
+                          Pflegediensten. Auch eine eigene Dokumentation des
+                          Gesundheitszustands und der Pflegebedürfnisse kann
+                          hilfreich sein. Die Pflegekasse informiert dich über
+                          die genauen Anforderungen.
+                        </p>
+                      </div>
+                    </div>,
+                    <div key="slide-3">
+                      <div className="border border-blue-900 bg-blue-100 shadow-lg rounded-lg p-6">
+                        <h3 className="text-lg font-semibold mb-2 text-blue-900">
+                          Wie lange dauert die Bearbeitung?
+                        </h3>
+                        <p className="text-base font-sans text-gray-900">
+                          Die Bearbeitung eines Antrags auf Pflegegrad dauert in
+                          der Regel etwa 3 bis 5 Wochen. Der Medizinische Dienst
+                          muss die Begutachtung innerhalb von 20 Arbeitstagen
+                          nach Antragstellung durchführen. In dringenden Fällen
+                          kann der Prozess beschleunigt werden.
+                        </p>
+                      </div>
+                    </div>,
+                  ],
+                })
+              }
+            />
+
             <Link
-              to="/blank"
+              onClick={() => openModal("modal3")}
               className="absolute underline text-blue-900 text-sm sm:text-lg md:text-xl sm:w-auto w-full"
               style={{ top: "23%", left: "55%" }}
             >
-              <span className="block sm:inline">Planung der Pflege</span>
-              <span className="block sm:inline"></span>
+              <span className="block sm:inline"> Planung </span>
+              <span className="block sm:inline"> der Pflege</span>
             </Link>
+            <Modal
+              isOpen={activeModal === "modal3"}
+              onClose={closeModal}
+              title="Planung der Pflege
+"
+              content={
+                <ul className="list-disc pl-5 space-y-2 text-gray-700">
+                  <li>Wie erstelle ich einen Pflegeplan?</li>
+                  <li>Was muss ich dabei beachten?</li>
+                  <li>Wie oft sollte ich den Plan anpassen?</li>
+                </ul>
+              }
+              actionLabel="Mehr Erfahren"
+              onAction={() =>
+                handleNavigateToSlide({
+                  title: "Planung der Pflege",
+                  slides: [
+                    <div key="slide-1">
+                      <div className="border border-blue-900 bg-blue-100 shadow-lg rounded-lg p-6">
+                        <h3 className="text-lg font-semibold mb-2 text-blue-900">
+                          Wie erstelle ich einen Pflegeplan?
+                        </h3>
+                        <p className="text-base font-sans text-gray-900">
+                          Ein Pflegeplan wird oft in Zusammenarbeit mit einem
+                          Pflegedienst oder Pflegeberater erstellt. Er
+                          berücksichtigt die individuellen Bedürfnisse der
+                          pflegebedürftigen Person und legt fest, welche
+                          Maßnahmen wann und durch wen durchgeführt werden. So
+                          kann eine strukturierte und bedarfsgerechte Versorgung
+                          sichergestellt werden.
+                        </p>
+                      </div>
+                    </div>,
+                    <div key="slide-2">
+                      <div className="border border-blue-900 bg-blue-100 shadow-lg rounded-lg p-6">
+                        <h3 className="text-lg font-semibold mb-2 text-blue-900">
+                          Was muss ich dabei beachten?
+                        </h3>
+                        <p className="text-base font-sans text-gray-900">
+                          Bei der Erstellung eines Pflegeplans ist es wichtig,
+                          die körperlichen und emotionalen Bedürfnisse der
+                          Person zu berücksichtigen. Du solltest realistische
+                          Ziele setzen und sowohl professionelle Pflege als auch
+                          familiäre Unterstützung einplanen. Auch der Zugang zu
+                          Hilfsmitteln und Pflegediensten spielt eine zentrale
+                          Rolle.
+                        </p>
+                      </div>
+                    </div>,
+                    <div key="slide-3">
+                      <div className="border border-blue-900 bg-blue-100 shadow-lg rounded-lg p-6">
+                        <h3 className="text-lg font-semibold mb-2 text-blue-900">
+                          Wie oft sollte ich den Plan anpassen?
+                        </h3>
+                        <p className="text-base font-sans text-gray-900">
+                          Ein Pflegeplan sollte regelmäßig überprüft und bei
+                          Bedarf angepasst werden. Vor allem bei
+                          gesundheitlichen Veränderungen oder neuen
+                          Anforderungen ist eine Aktualisierung notwendig. Auch
+                          Änderungen in der Pflegesituation oder bei den
+                          verfügbaren Ressourcen sollten berücksichtigt werden.
+                        </p>
+                      </div>
+                    </div>,
+                  ],
+                })
+              }
+            />
+
             <Link
-              to="/blank"
+              onClick={() => openModal("modal4")}
               className="absolute underline text-blue-900 text-sm sm:text-lg md:text-xl sm:w-auto w-full"
-              style={{ top: "37%", left: "60%" }}
+              style={{ top: "37%", left: "56%" }}
             >
-              <span className="block sm:inline">Unterstützung</span>
-              <span className="block sm:inline">im Alltag</span>
+              <span className="block sm:inline"> Praktische </span>
+              <span className="block sm:inline"> Unterstützung im Alltag </span>
             </Link>
+            <Modal
+              isOpen={activeModal === "modal4"}
+              onClose={closeModal}
+              title="Praktische Unterstützung im Alltag
+"
+              content={
+                <ul className="list-disc pl-5 space-y-2 text-gray-700">
+                  <li>Welche Hilfen gibt es im Alltag?</li>
+                  <li>Wo finde ich Unterstützung in meiner Nähe?</li>
+                  <li>Wie kann ich den Alltag erleichtern?</li>
+                </ul>
+              }
+              actionLabel="Mehr Erfahren"
+              onAction={() =>
+                handleNavigateToSlide({
+                  title: "Praktische Unterstützung im Alltag",
+                  slides: [
+                    <div key="slide-1">
+                      <div className="border border-blue-900 bg-blue-100 shadow-lg rounded-lg p-6">
+                        <h3 className="text-lg font-semibold mb-2 text-blue-900">
+                          Welche Hilfen gibt es im Alltag?
+                        </h3>
+                        <p className="text-base font-sans text-gray-900">
+                          Es gibt verschiedene Hilfen wie mobile Pflegedienste,
+                          die bei der Körperpflege oder dem Haushalt
+                          unterstützen. Auch Essen auf Rädern, Fahrdienste oder
+                          Hausnotrufsysteme bieten wertvolle Unterstützung.
+                          Darüber hinaus gibt es ehrenamtliche Angebote oder
+                          Nachbarschaftshilfen, die den Alltag erleichtern
+                          können.
+                        </p>
+                      </div>
+                    </div>,
+                    <div key="slide-2">
+                      <div className="border border-blue-900 bg-blue-100 shadow-lg rounded-lg p-6">
+                        <h3 className="text-lg font-semibold mb-2 text-blue-900">
+                          Wo finde ich Unterstützung in meiner Nähe?
+                        </h3>
+                        <p className="text-base font-sans text-gray-900">
+                          Unterstützung findest du bei Pflegestützpunkten,
+                          Sozialverbänden oder lokalen Pflegeberatungsstellen.
+                          Auch Online-Datenbanken bieten eine Übersicht über
+                          Hilfsangebote in deiner Region. Pflegedienste und
+                          kirchliche Organisationen wie Caritas oder Diakonie
+                          sind oft gut vernetzt und können weiterhelfen.
+                        </p>
+                      </div>
+                    </div>,
+                    <div key="slide-3">
+                      <div className="border border-blue-900 bg-blue-100 shadow-lg rounded-lg p-6">
+                        <h3 className="text-lg font-semibold mb-2 text-blue-900">
+                          Wie kann ich den Alltag erleichtern?
+                        </h3>
+                        <p className="text-base font-sans text-gray-900">
+                          Alltagshilfen wie Rollatoren, Haltegriffe im Bad oder
+                          Treppenlifte können die Mobilität und Sicherheit zu
+                          Hause erhöhen. Ein strukturierter Tagesablauf mit
+                          festen Routinen und regelmäßiger Unterstützung durch
+                          Angehörige oder Pflegedienste hilft, den Alltag zu
+                          bewältigen. Auch technische Hilfsmittel wie
+                          Sprachassistenten können nützlich sein.
+                        </p>
+                      </div>
+                    </div>,
+                  ],
+                })
+              }
+            />
+
             <Link
-              to="/blank"
+              onClick={() => openModal("modal5")}
               className="absolute underline text-blue-900 text-sm sm:text-lg md:text-xl sm:w-auto w-full"
               style={{ top: "45%", left: "8%" }}
             >
-              <span className="block sm:inline">Finanzielle</span>
-              <span className="block sm:inline">Unterstützung</span>
+              <span className="block sm:inline"> Finanzielle</span>
+              <span className="block sm:inline"> Unterstützung </span>
             </Link>
+            <Modal
+              isOpen={activeModal === "modal5"}
+              onClose={closeModal}
+              title="Finanzielle Unterstützung
+"
+              content={
+                <ul className="list-disc pl-5 space-y-2 text-gray-700">
+                  <li>Welche finanziellen Hilfen gibt es?</li>
+                  <li>Wie beantrage ich Pflegegeld?</li>
+                  <li>Gibt es steuerliche Vorteile?</li>
+                </ul>
+              }
+              actionLabel="Mehr Erfahren"
+              onAction={() =>
+                handleNavigateToSlide({
+                  title: "Finanzielle Unterstützung",
+                  slides: [
+                    <div key="slide-1">
+                      <div className="border border-blue-900 bg-blue-100 shadow-lg rounded-lg p-6">
+                        <h3 className="text-lg font-semibold mb-2 text-blue-900">
+                          Welche finanziellen Hilfen gibt es?
+                        </h3>
+                        <p className="text-base font-sans text-gray-900">
+                          Es gibt verschiedene finanzielle Hilfen wie
+                          Pflegegeld, Pflegesachleistungen und Zuschüsse für
+                          wohnumfeldverbessernde Maßnahmen. Auch Kurzzeit- und
+                          Verhinderungspflege können finanziell unterstützt
+                          werden. Die Pflegekasse bietet eine detaillierte
+                          Übersicht der verfügbaren Leistungen.
+                        </p>
+                      </div>
+                    </div>,
+                    <div key="slide-2">
+                      <div className="border border-blue-900 bg-blue-100 shadow-lg rounded-lg p-6">
+                        <h3 className="text-lg font-semibold mb-2 text-blue-900">
+                          Wie beantrage ich Pflegegeld?
+                        </h3>
+                        <p className="text-base font-sans text-gray-900">
+                          Pflegegeld beantragst du bei der Pflegekasse der
+                          Krankenkasse der pflegebedürftigen Person. Nach der
+                          Begutachtung durch den Medizinischen Dienst wird der
+                          Pflegegrad festgelegt, und je nach Pflegegrad wird das
+                          Pflegegeld ausgezahlt. Es ist wichtig, alle
+                          notwendigen Unterlagen vollständig einzureichen, um
+                          Verzögerungen zu vermeiden.
+                        </p>
+                      </div>
+                    </div>,
+                    <div key="slide-3">
+                      <div className="border border-blue-900 bg-blue-100 shadow-lg rounded-lg p-6">
+                        <h3 className="text-lg font-semibold mb-2 text-blue-900">
+                          Gibt es steuerliche Vorteile?
+                        </h3>
+                        <p className="text-base font-sans text-gray-900">
+                          Ja, pflegende Angehörige können bestimmte Pflegekosten
+                          steuerlich geltend machen, zum Beispiel Ausgaben für
+                          Pflegepersonal oder Hilfsmittel. Auch ein
+                          Pflege-Pauschbetrag kann unter bestimmten
+                          Voraussetzungen in Anspruch genommen werden. Ein
+                          Steuerberater kann helfen, die Vorteile optimal zu
+                          nutzen.
+                        </p>
+                      </div>
+                    </div>,
+                  ],
+                })
+              }
+            />
             <Link
-              to="/blank"
+              onClick={() => openModal("modal6")}
               className="absolute underline text-blue-900 text-sm sm:text-lg md:text-xl sm:w-auto w-full"
               style={{ top: "62%", left: "20%" }}
             >
-              <span className="block sm:inline">Entlastung</span>
-              <span className="block sm:inline">für Angehörige</span>
+              <span className="block sm:inline"> Entlastung</span>
+              <span className="block sm:inline"> für Angehörige</span>
             </Link>
+            <Modal
+              isOpen={activeModal === "modal6"}
+              onClose={closeModal}
+              title="Entlastung für Angehörige
+"
+              content={
+                <ul className="list-disc pl-5 space-y-2 text-gray-700">
+                  <li>Welche Entlastungsmöglichkeiten gibt es?</li>
+                  <li>Wie finde ich Kurzzeitpflege?</li>
+                  <li>Gibt es Selbsthilfegruppen?</li>
+                </ul>
+              }
+              actionLabel="Mehr Erfahren"
+              onAction={() =>
+                handleNavigateToSlide({
+                  title: "Entlastung für Angehörige",
+                  slides: [
+                    <div key="slide-1">
+                      <div className="border border-blue-900 bg-blue-100 shadow-lg rounded-lg p-6">
+                        <h3 className="text-lg font-semibold mb-2 text-blue-900">
+                          Welche Entlastungsmöglichkeiten gibt es?
+                        </h3>
+                        <p className="text-base font-sans text-gray-900">
+                          Entlastung bieten Pflegedienste, Tagespflege oder
+                          Kurzzeitpflegeeinrichtungen. Auch Verhinderungspflege,
+                          bei der professionelle Kräfte zeitweise die Pflege
+                          übernehmen, kann eine wertvolle Hilfe sein.
+                          Beratungsstellen unterstützen pflegende Angehörige
+                          dabei, passende Entlastungsangebote zu finden.
+                        </p>
+                      </div>
+                    </div>,
+                    <div key="slide-2">
+                      <div className="border border-blue-900 bg-blue-100 shadow-lg rounded-lg p-6">
+                        <h3 className="text-lg font-semibold mb-2 text-blue-900">
+                          Wie finde ich Kurzzeitpflege?
+                        </h3>
+                        <p className="text-base font-sans text-gray-900">
+                          Kurzzeitpflege kann über die Pflegekasse organisiert
+                          werden. Es gibt spezialisierte Einrichtungen, die
+                          vorübergehende Pflege anbieten, wenn Angehörige eine
+                          Auszeit benötigen. Pflegestützpunkte oder
+                          Pflegeberater helfen dabei, geeignete Plätze in der
+                          Nähe zu finden und die Kostenübernahme zu klären.
+                        </p>
+                      </div>
+                    </div>,
+                    <div key="slide-3">
+                      <div className="border border-blue-900 bg-blue-100 shadow-lg rounded-lg p-6">
+                        <h3 className="text-lg font-semibold mb-2 text-blue-900">
+                          Gibt es Selbsthilfegruppen?
+                        </h3>
+                        <p className="text-base font-sans text-gray-900">
+                          Ja, es gibt viele Selbsthilfegruppen für pflegende
+                          Angehörige, die den Austausch und gegenseitige
+                          Unterstützung ermöglichen. Diese Gruppen bieten Raum
+                          für Gespräche, emotionale Entlastung und den Austausch
+                          von Erfahrungen. Informationen dazu findest du bei
+                          Pflegestützpunkten oder Online-Selbsthilfeportalen.
+                        </p>
+                      </div>
+                    </div>,
+                  ],
+                })
+              }
+            />
 
             <Link
-              to="/blank"
+              onClick={() => openModal("modal7")}
               className="absolute underline text-blue-900 text-sm sm:text-lg md:text-xl sm:w-auto w-full"
               style={{ top: "82%", left: "50%" }}
             >
-              <span className="block sm:inline">Umgang mit</span>
-              <span className="block sm:inline">Herausforderungen</span>
+              <span className="block sm:inline"> Umgang mit</span>
+              <span className="block sm:inline"> Herausforderungen</span>
             </Link>
+            <Modal
+              isOpen={activeModal === "modal7"}
+              onClose={closeModal}
+              title="Umgang mit Herausforderungen
+"
+              content={
+                <ul className="list-disc pl-5 space-y-2 text-gray-700">
+                  <li>Wie gehe ich mit Stress um?</li>
+                  <li>Was mache ich bei Konflikten?</li>
+                  <li>Wie bewältige ich Überforderung?</li>
+                </ul>
+              }
+              actionLabel="Mehr Erfahren"
+              onAction={() =>
+                handleNavigateToSlide({
+                  title: "Umgang mit Herausforderungen",
+                  slides: [
+                    <div key="slide-1">
+                      <div className="border border-blue-900 bg-blue-100 shadow-lg rounded-lg p-6">
+                        <h3 className="text-lg font-semibold mb-2 text-blue-900">
+                          Wie gehe ich mit Stress um?
+                        </h3>
+                        <p className="text-base font-sans text-gray-900">
+                          EnStress lässt sich durch klare Zeitplanung und
+                          regelmäßige Pausen reduzieren. Entspannungstechniken
+                          wie Atemübungen, Yoga oder Meditation können helfen,
+                          den Stresslevel zu senken. Auch der Austausch mit
+                          anderen pflegenden Angehörigen bietet oft emotionale
+                          Entlastung.
+                        </p>
+                      </div>
+                    </div>,
+                    <div key="slide-2">
+                      <div className="border border-blue-900 bg-blue-100 shadow-lg rounded-lg p-6">
+                        <h3 className="text-lg font-semibold mb-2 text-blue-900">
+                          Was mache ich bei Konflikten?
+                        </h3>
+                        <p className="text-base font-sans text-gray-900">
+                          Bei Konflikten ist es wichtig, offen und ruhig zu
+                          kommunizieren. Professionelle Mediation oder
+                          Beratungen durch Pflegeberatungsstellen können helfen,
+                          Missverständnisse zu klären. Wenn es schwierig wird,
+                          können externe Pflegedienste oder temporäre Entlastung
+                          durch Kurzzeitpflege eine Lösung bieten.
+                        </p>
+                      </div>
+                    </div>,
+                    <div key="slide-3">
+                      <div className="border border-blue-900 bg-blue-100 shadow-lg rounded-lg p-6">
+                        <h3 className="text-lg font-semibold mb-2 text-blue-900">
+                          Wie bewältige ich Überforderung?
+                        </h3>
+                        <p className="text-base font-sans text-gray-900">
+                          Bei Überforderung ist es wichtig, frühzeitig Hilfe
+                          anzunehmen und sich selbst Grenzen zu setzen.
+                          Entlastungsangebote wie Verhinderungspflege,
+                          Tagespflege oder Kurzzeitpflege können Freiräume
+                          schaffen. Psychologische Unterstützung oder
+                          Selbsthilfegruppen sind ebenfalls gute Anlaufstellen.
+                        </p>
+                      </div>
+                    </div>,
+                  ],
+                })
+              }
+            />
           </div>
 
           <div className="fixed bottom-16 left-1/2 transform -translate-x-1/2  z-50">
