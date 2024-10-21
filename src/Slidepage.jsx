@@ -38,7 +38,7 @@ function Slidepage() {
   return (
     <div className="p-4 md:p-16" style={{ position: 'relative' }}>
       <button
-        className="bg-gray-300 text-gray-800 mt-20 py-2 px-4 rounded-md shadow-md hover:bg-gray-400 transition duration-200 ease-in-out"
+        className="bg-customBlue text-white py-2 px-4 rounded-full mt-20 py-2 px-4"
         onClick={handleBack}
       >
         Zurück

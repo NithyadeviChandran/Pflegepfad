@@ -63,26 +63,28 @@ function Startpage() {
     <div className="min-h-screen flex flex-col overflow-x-hidden">
       <main className="flex-grow mt-12 mb-16">
         <div className="container relative w-full max-w-4xl  px-4 py-8 md:py-16">
-          <div className="flex justify-between mx-auto mb-6 border rounded border-blue-200 p-2 bg-blue-100 w-full max-w-md md:max-w-2xl">
+          <div className="flex justify-between mx-auto mb-6 border rounded border-blue-200 bg-blue-100 w-full max-w-md md:max-w-2xl">
             <div className="flex flex-col justify-center flex-1">
-              <h2 className="text-lg text-center sm:text-2xl md:text-3xl text-blue-900 font-bold mb-2">
+              <h2 className="text-lg text-center sm:text-2xl md:text-3xl text-customBlue font-bold ">
                 Die Reise geht los!
               </h2>
-              <p className="whitespace-normal text-blue-900 font-sans">
+              <p className="whitespace-normal px-2 text-sm sm:text-lg md:text-xl text-customBlue font-sans">
                 Hier sehen Sie, wie ein beispielhafter Verlauf von Pflege
                 aussehen könnte:
               </p>
             </div>
 
-            <img
-              className="h-24 p-2 fill-blue-900 bg-blue-100"
-              src={image}
-              alt="Description"
-            />
+            <div className="flex-shrink-0">
+          <img
+            className="w-36 h-28 object-cover rounded-full"
+            src={image}
+            alt="Description"
+          />
+        </div>
           </div>
 
           <div
-            className="relative flex items-center bg-cover bg-center min-h-[800px] z-0"
+            className="relative flex items-center bg-cover bg-center min-h-[900px] z-0"
             style={{
               backgroundImage: `url(${Path})`,
               backgroundRepeat: "no-repeat",
@@ -92,7 +94,7 @@ function Startpage() {
           >
             <Link
               onClick={() => openModal("modal1")}
-              className="absolute underline text-blue-900 text-sm sm:text-lg md:text-xl sm:w-auto w-full"
+              className="absolute underline text-customBlue75 text-sm sm:text-lg md:text-xl sm:w-auto w-full"
               style={{ top: "0.1%", left: "13%" }}
             >
               <span className="block sm:inline">Erkennung von</span>
@@ -103,7 +105,7 @@ function Startpage() {
               onClose={closeModal}
               title="Erkennung von Pflegebedürftigkeit"
               content={
-                <ul className="list-disc pl-5 space-y-2 text-gray-700">
+                <ul className="list-disc pl-5 text-sm sm:text-lg md:text-xl space-y-2 text-customBlue75">
                   <li>Wie erkenne ich Pflegebedürftigkeit?</li>
                   <li>Welche Anzeichen gibt es?</li>
                   <li>Wer kann helfen, das festzustellen?</li>
@@ -115,11 +117,11 @@ function Startpage() {
                   title: "Erkennung von Pflegebedürftigkeit",
                   slides: [
                     <div key="slide-1">
-                      <div className="border border-blue-900 bg-blue-100 shadow-lg rounded-lg p-6">
-                        <h3 className="text-lg font-semibold mb-2 text-blue-900">
+                      <div className="border  bg-blue-100 shadow-lg rounded-lg p-6">
+                        <h3 className="text-lg font-semibold mb-2 text-customBlue">
                           Wie erkenne ich Pflegebedürftigkeit?
                         </h3>
-                        <p className="text-base font-sans text-gray-900">
+                        <p className="text-base font-sans text-sm sm:text-lg md:text-xl space-y-2 text-customBlue75">
                           Pflegebedürftigkeit erkennst du daran, dass
                           alltägliche Aktivitäten wie Anziehen, Essen oder
                           Körperpflege zunehmend schwerfallen. Auch
@@ -132,11 +134,11 @@ function Startpage() {
                       </div>
                     </div>,
                     <div key="slide-2">
-                      <div className="border border-blue-900 bg-blue-100 shadow-lg rounded-lg p-6">
-                        <h3 className="text-lg font-semibold mb-2 text-blue-900">
+                      <div className="border bg-blue-100 shadow-lg rounded-lg p-6">
+                        <h3 className="text-lg font-semibold mb-2 text-customBlue">
                           Welche Anzeichen gibt es?
                         </h3>
-                        <p className="text-base font-sans text-gray-900">
+                        <p className="text-base font-sans text-sm sm:text-lg md:text-xl space-y-2 text-customBlue75">
                           Typische Anzeichen sind körperliche Einschränkungen,
                           zum Beispiel beim Gehen oder Aufstehen, sowie
                           Schwierigkeiten im Umgang mit dem Haushalt.
@@ -148,11 +150,11 @@ function Startpage() {
                       </div>
                     </div>,
                     <div key="slide-3">
-                      <div className="border border-blue-900 bg-blue-100 shadow-lg rounded-lg p-6">
-                        <h3 className="text-lg font-semibold mb-2 text-blue-900">
+                      <div className="border bg-blue-100 shadow-lg rounded-lg p-6">
+                        <h3 className="text-lg font-semibold mb-2 text-customBlue">
                           Wer kann helfen, das festzustellen?
                         </h3>
-                        <p className="text-base font-sans text-gray-900">
+                        <p className="text-base font-sans text-sm sm:text-lg md:text-xl space-y-2 text-customBlue75">
                           Pflegeberater, Hausärzte und Pflegedienste können eine
                           erste Einschätzung vornehmen. Sie bieten Beratung und
                           Unterstützung bei der Beurteilung des Pflegebedarfs
@@ -169,11 +171,11 @@ function Startpage() {
 
             <Link
               onClick={() => openModal("modal2")}
-              className="absolute underline text-blue-900 text-sm sm:text-lg md:text-xl sm:w-auto w-full"
+              className="absolute underline text-customBlue75 text-sm sm:text-lg md:text-xl sm:w-auto w-full"
               style={{ top: "10%", left: "50%" }}
             >
-              <span className="block sm:inline">Pflegegrad</span>
-              <span className="block sm:inline">Einstufung</span>
+              <span className="block sm:inline">Pflegegrad Einstufung</span>
+              <span className="block sm:inline"></span>
             </Link>
             <Modal
               isOpen={activeModal === "modal2"}
@@ -192,7 +194,7 @@ function Startpage() {
                   title: "Pflegegrad Einstufung",
                   slides: [
                     <div key="slide-1">
-                      <div className="border border-blue-900 bg-blue-100 shadow-lg rounded-lg p-6">
+                      <div className="border bg-blue-100 shadow-lg rounded-lg p-6">
                         <h3 className="text-lg font-semibold mb-2 text-blue-900">
                           Wie beantrage ich einen Pflegegrad?
                         </h3>
@@ -207,7 +209,7 @@ function Startpage() {
                       </div>
                     </div>,
                     <div key="slide-2">
-                      <div className="border border-blue-900 bg-blue-100 shadow-lg rounded-lg p-6">
+                      <div className="border  bg-blue-100 shadow-lg rounded-lg p-6">
                         <h3 className="text-lg font-semibold mb-2 text-blue-900">
                           Welche Unterlagen brauche ich?
                         </h3>
@@ -222,7 +224,7 @@ function Startpage() {
                       </div>
                     </div>,
                     <div key="slide-3">
-                      <div className="border border-blue-900 bg-blue-100 shadow-lg rounded-lg p-6">
+                      <div className="border  bg-blue-100 shadow-lg rounded-lg p-6">
                         <h3 className="text-lg font-semibold mb-2 text-blue-900">
                           Wie lange dauert die Bearbeitung?
                         </h3>
@@ -242,11 +244,11 @@ function Startpage() {
 
             <Link
               onClick={() => openModal("modal3")}
-              className="absolute underline text-blue-900 text-sm sm:text-lg md:text-xl sm:w-auto w-full"
-              style={{ top: "23%", left: "55%" }}
+              className="absolute underline text-customBlue75 text-sm sm:text-lg md:text-xl sm:w-auto w-full"
+              style={{ top: "24%", left: "8%" }}
             >
-              <span className="block sm:inline"> Planung </span>
-              <span className="block sm:inline"> der Pflege</span>
+              <span className="block sm:inline"> Planung der Pflege</span>
+              <span className="block sm:inline">  </span>
             </Link>
             <Modal
               isOpen={activeModal === "modal3"}
@@ -266,7 +268,7 @@ function Startpage() {
                   title: "Planung der Pflege",
                   slides: [
                     <div key="slide-1">
-                      <div className="border border-blue-900 bg-blue-100 shadow-lg rounded-lg p-6">
+                      <div className="border  bg-blue-100 shadow-lg rounded-lg p-6">
                         <h3 className="text-lg font-semibold mb-2 text-blue-900">
                           Wie erstelle ich einen Pflegeplan?
                         </h3>
@@ -282,7 +284,7 @@ function Startpage() {
                       </div>
                     </div>,
                     <div key="slide-2">
-                      <div className="border border-blue-900 bg-blue-100 shadow-lg rounded-lg p-6">
+                      <div className="border  bg-blue-100 shadow-lg rounded-lg p-6">
                         <h3 className="text-lg font-semibold mb-2 text-blue-900">
                           Was muss ich dabei beachten?
                         </h3>
@@ -298,7 +300,7 @@ function Startpage() {
                       </div>
                     </div>,
                     <div key="slide-3">
-                      <div className="border border-blue-900 bg-blue-100 shadow-lg rounded-lg p-6">
+                      <div className="border bg-blue-100 shadow-lg rounded-lg p-6">
                         <h3 className="text-lg font-semibold mb-2 text-blue-900">
                           Wie oft sollte ich den Plan anpassen?
                         </h3>
@@ -319,11 +321,11 @@ function Startpage() {
 
             <Link
               onClick={() => openModal("modal4")}
-              className="absolute underline text-blue-900 text-sm sm:text-lg md:text-xl sm:w-auto w-full"
-              style={{ top: "37%", left: "56%" }}
+              className="absolute underline text-customBlue75 text-sm sm:text-lg md:text-xl sm:w-auto w-full"
+              style={{ top: "37%", left: "11%" }}
             >
-              <span className="block sm:inline"> Praktische </span>
-              <span className="block sm:inline"> Unterstützung im Alltag </span>
+              <span className="block sm:inline"> Praktische Unter-</span>
+              <span className="block sm:inline"> stützung im Alltag </span>
             </Link>
             <Modal
               isOpen={activeModal === "modal4"}
@@ -343,7 +345,7 @@ function Startpage() {
                   title: "Praktische Unterstützung im Alltag",
                   slides: [
                     <div key="slide-1">
-                      <div className="border border-blue-900 bg-blue-100 shadow-lg rounded-lg p-6">
+                      <div className="border bg-blue-100 shadow-lg rounded-lg p-6">
                         <h3 className="text-lg font-semibold mb-2 text-blue-900">
                           Welche Hilfen gibt es im Alltag?
                         </h3>
@@ -359,7 +361,7 @@ function Startpage() {
                       </div>
                     </div>,
                     <div key="slide-2">
-                      <div className="border border-blue-900 bg-blue-100 shadow-lg rounded-lg p-6">
+                      <div className="border bg-blue-100 shadow-lg rounded-lg p-6">
                         <h3 className="text-lg font-semibold mb-2 text-blue-900">
                           Wo finde ich Unterstützung in meiner Nähe?
                         </h3>
@@ -374,7 +376,7 @@ function Startpage() {
                       </div>
                     </div>,
                     <div key="slide-3">
-                      <div className="border border-blue-900 bg-blue-100 shadow-lg rounded-lg p-6">
+                      <div className="border bg-blue-100 shadow-lg rounded-lg p-6">
                         <h3 className="text-lg font-semibold mb-2 text-blue-900">
                           Wie kann ich den Alltag erleichtern?
                         </h3>
@@ -396,8 +398,8 @@ function Startpage() {
 
             <Link
               onClick={() => openModal("modal5")}
-              className="absolute underline text-blue-900 text-sm sm:text-lg md:text-xl sm:w-auto w-full"
-              style={{ top: "45%", left: "8%" }}
+              className="absolute underline text-customBlue75 text-sm sm:text-lg md:text-xl sm:w-auto w-full"
+              style={{ top: "48%", left: "44%" }}
             >
               <span className="block sm:inline"> Finanzielle</span>
               <span className="block sm:inline"> Unterstützung </span>
@@ -420,7 +422,7 @@ function Startpage() {
                   title: "Finanzielle Unterstützung",
                   slides: [
                     <div key="slide-1">
-                      <div className="border border-blue-900 bg-blue-100 shadow-lg rounded-lg p-6">
+                      <div className="border  bg-blue-100 shadow-lg rounded-lg p-6">
                         <h3 className="text-lg font-semibold mb-2 text-blue-900">
                           Welche finanziellen Hilfen gibt es?
                         </h3>
@@ -435,7 +437,7 @@ function Startpage() {
                       </div>
                     </div>,
                     <div key="slide-2">
-                      <div className="border border-blue-900 bg-blue-100 shadow-lg rounded-lg p-6">
+                      <div className="border bg-blue-100 shadow-lg rounded-lg p-6">
                         <h3 className="text-lg font-semibold mb-2 text-blue-900">
                           Wie beantrage ich Pflegegeld?
                         </h3>
@@ -451,7 +453,7 @@ function Startpage() {
                       </div>
                     </div>,
                     <div key="slide-3">
-                      <div className="border border-blue-900 bg-blue-100 shadow-lg rounded-lg p-6">
+                      <div className="border bg-blue-100 shadow-lg rounded-lg p-6">
                         <h3 className="text-lg font-semibold mb-2 text-blue-900">
                           Gibt es steuerliche Vorteile?
                         </h3>
@@ -472,8 +474,8 @@ function Startpage() {
             />
             <Link
               onClick={() => openModal("modal6")}
-              className="absolute underline text-blue-900 text-sm sm:text-lg md:text-xl sm:w-auto w-full"
-              style={{ top: "62%", left: "20%" }}
+              className="absolute underline text-customBlue75 text-sm sm:text-lg md:text-xl sm:w-auto w-full"
+              style={{ top: "62%", left: "17%" }}
             >
               <span className="block sm:inline"> Entlastung</span>
               <span className="block sm:inline"> für Angehörige</span>
@@ -496,7 +498,7 @@ function Startpage() {
                   title: "Entlastung für Angehörige",
                   slides: [
                     <div key="slide-1">
-                      <div className="border border-blue-900 bg-blue-100 shadow-lg rounded-lg p-6">
+                      <div className="border  bg-blue-100 shadow-lg rounded-lg p-6">
                         <h3 className="text-lg font-semibold mb-2 text-blue-900">
                           Welche Entlastungsmöglichkeiten gibt es?
                         </h3>
@@ -511,7 +513,7 @@ function Startpage() {
                       </div>
                     </div>,
                     <div key="slide-2">
-                      <div className="border border-blue-900 bg-blue-100 shadow-lg rounded-lg p-6">
+                      <div className="border bg-blue-100 shadow-lg rounded-lg p-6">
                         <h3 className="text-lg font-semibold mb-2 text-blue-900">
                           Wie finde ich Kurzzeitpflege?
                         </h3>
@@ -526,7 +528,7 @@ function Startpage() {
                       </div>
                     </div>,
                     <div key="slide-3">
-                      <div className="border border-blue-900 bg-blue-100 shadow-lg rounded-lg p-6">
+                      <div className="border bg-blue-100 shadow-lg rounded-lg p-6">
                         <h3 className="text-lg font-semibold mb-2 text-blue-900">
                           Gibt es Selbsthilfegruppen?
                         </h3>
@@ -547,8 +549,8 @@ function Startpage() {
 
             <Link
               onClick={() => openModal("modal7")}
-              className="absolute underline text-blue-900 text-sm sm:text-lg md:text-xl sm:w-auto w-full"
-              style={{ top: "82%", left: "50%" }}
+              className="absolute underline text-customBlue75 text-sm sm:text-lg md:text-xl sm:w-auto w-full"
+              style={{ top: "82%", left: "52%" }}
             >
               <span className="block sm:inline"> Umgang mit</span>
               <span className="block sm:inline"> Herausforderungen</span>
@@ -571,7 +573,7 @@ function Startpage() {
                   title: "Umgang mit Herausforderungen",
                   slides: [
                     <div key="slide-1">
-                      <div className="border border-blue-900 bg-blue-100 shadow-lg rounded-lg p-6">
+                      <div className="border  bg-blue-100 shadow-lg rounded-lg p-6">
                         <h3 className="text-lg font-semibold mb-2 text-blue-900">
                           Wie gehe ich mit Stress um?
                         </h3>
@@ -586,7 +588,7 @@ function Startpage() {
                       </div>
                     </div>,
                     <div key="slide-2">
-                      <div className="border border-blue-900 bg-blue-100 shadow-lg rounded-lg p-6">
+                      <div className="border  bg-blue-100 shadow-lg rounded-lg p-6">
                         <h3 className="text-lg font-semibold mb-2 text-blue-900">
                           Was mache ich bei Konflikten?
                         </h3>
@@ -601,7 +603,7 @@ function Startpage() {
                       </div>
                     </div>,
                     <div key="slide-3">
-                      <div className="border border-blue-900 bg-blue-100 shadow-lg rounded-lg p-6">
+                      <div className="border  bg-blue-100 shadow-lg rounded-lg p-6">
                         <h3 className="text-lg font-semibold mb-2 text-blue-900">
                           Wie bewältige ich Überforderung?
                         </h3>
