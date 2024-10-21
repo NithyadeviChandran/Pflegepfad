@@ -1,0 +1,25 @@
+.path-container {
+    display: flex;
+    justify-content: center; 
+    align-items: center;    
+    height: 100vh;         
+    background-image: url('./assets/Path.svg'); 
+    background-position: center;
+    background-repeat: no-repeat; 
+    background-size: contain; 
+  }
+  
+  @media (max-width: 768px) {
+    .path-container {
+      background-size: cover; 
+      padding: 10px;         
+    }
+  }
+
+  .container {
+    width: 100%;      
+    max-width: 1200px;
+    margin: 0 auto;    
+    padding: 20px;
+  }
+  

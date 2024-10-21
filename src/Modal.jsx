@@ -10,13 +10,13 @@ function Modal({ isOpen, onClose, title, content, onAction, actionLabel }) {
         <div>{content}</div>
         <div className="flex justify-between mt-4">
           <button
-            className="bg-customBlue text-white py-2 px-4 rounded-full "
+            className="bg-customBlue font-rem text-white py-2 px-4 rounded-full "
             onClick={onAction} 
           >
             {actionLabel}
           </button>
           <button
-            className="bg-customBlue text-white py-2 px-4 rounded-full"
+            className="bg-customBlue font-rem text-white py-2 px-4 rounded-full"
             onClick={onClose} 
           >
             Schließen

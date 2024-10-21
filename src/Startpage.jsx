@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import './Startpage.css'
 import { Link, useNavigate } from "react-router-dom";
 import { useSlideData } from "./SlideContext";
 import image from "./assets/carepic.png";
@@ -62,13 +63,13 @@ function Startpage() {
   return (
     <div className="min-h-screen flex flex-col overflow-x-hidden">
       <main className="flex-grow mt-12 mb-16">
-        <div className="container relative w-full max-w-4xl  px-4 py-8 md:py-16">
-          <div className="flex justify-between mx-auto mb-6 border rounded border-blue-200 bg-blue-100 w-full max-w-md md:max-w-2xl">
+        <div className="container relative w-full max-w-4xl  px-4 py-8 md:px-16 py-16 w-full">
+          <div className="flex justify-between mx-auto mb-6 border rounded border-blue-200 bg-blue-100 w-full md:w-full lg:w-full ">
             <div className="flex flex-col justify-center flex-1">
               <h2 className="text-lg text-center sm:text-2xl md:text-3xl text-customBlue font-bold ">
                 Die Reise geht los!
               </h2>
-              <p className="whitespace-normal px-2 text-sm sm:text-lg md:text-xl text-customBlue font-sans">
+              <p className="whitespace-normal px-2 text-sm sm:text-lg md:text-xl text-customBlue font-rem">
                 Hier sehen Sie, wie ein beispielhafter Verlauf von Pflege
                 aussehen könnte:
               </p>
@@ -84,7 +85,7 @@ function Startpage() {
           </div>
 
           <div
-            className="relative flex items-center bg-cover bg-center min-h-[900px] z-0"
+            className="path-container relative flex justify-center items-center bg-cover bg-center min-h-[900px] z-0 md:min-h-[1200px]"
             style={{
               backgroundImage: `url(${Path})`,
               backgroundRepeat: "no-repeat",
@@ -94,8 +95,8 @@ function Startpage() {
           >
             <Link
               onClick={() => openModal("modal1")}
-              className="absolute underline text-customBlue75 text-sm sm:text-lg md:text-xl sm:w-auto w-full"
-              style={{ top: "0.1%", left: "13%" }}
+              className="absolute underline text-customBlue75 font-rem text-sm sm:text-lg md:text-xl w-auto sm:w-auto w-full "
+              style={{ top: "0.2%", left: "9%"  }}
             >
               <span className="block sm:inline">Erkennung von</span>
               <span className="block sm:inline">Pflegebedürftigkeit</span>
@@ -105,7 +106,7 @@ function Startpage() {
               onClose={closeModal}
               title="Erkennung von Pflegebedürftigkeit"
               content={
-                <ul className="list-disc pl-5 text-sm sm:text-lg md:text-xl space-y-2 text-customBlue75">
+                <ul className="list-disc pl-5 font-rem text-sm sm:text-lg md:text-xl space-y-2 text-customBlue75">
                   <li>Wie erkenne ich Pflegebedürftigkeit?</li>
                   <li>Welche Anzeichen gibt es?</li>
                   <li>Wer kann helfen, das festzustellen?</li>
@@ -117,11 +118,11 @@ function Startpage() {
                   title: "Erkennung von Pflegebedürftigkeit",
                   slides: [
                     <div key="slide-1">
-                      <div className="border  bg-blue-100 shadow-lg rounded-lg p-6">
-                        <h3 className="text-lg font-semibold mb-2 text-customBlue">
+                      <div className="border bg-blue-100 shadow-lg rounded-lg text-center p-4 ">
+                        <h3 className="text-lg font-rem font-semibold mb-2 text-customBlue">
                           Wie erkenne ich Pflegebedürftigkeit?
                         </h3>
-                        <p className="text-base font-sans text-sm sm:text-lg md:text-xl space-y-2 text-customBlue75">
+                        <p className="text-base font-rem leading-relaxed text-justify text-sm sm:text-lg md:text-xl space-y-2 text-customBlue75">
                           Pflegebedürftigkeit erkennst du daran, dass
                           alltägliche Aktivitäten wie Anziehen, Essen oder
                           Körperpflege zunehmend schwerfallen. Auch
@@ -134,11 +135,11 @@ function Startpage() {
                       </div>
                     </div>,
                     <div key="slide-2">
-                      <div className="border bg-blue-100 shadow-lg rounded-lg p-6">
-                        <h3 className="text-lg font-semibold mb-2 text-customBlue">
+                      <div className="border bg-blue-100 shadow-lg rounded-lg text-center p-4">
+                        <h3 className="text-lg font-rem font-semibold mb-2 text-customBlue">
                           Welche Anzeichen gibt es?
                         </h3>
-                        <p className="text-base font-sans text-sm sm:text-lg md:text-xl space-y-2 text-customBlue75">
+                        <p className="text-base font-rem leading-relaxed text-justify text-sm sm:text-lg md:text-xl space-y-2 text-customBlue75">
                           Typische Anzeichen sind körperliche Einschränkungen,
                           zum Beispiel beim Gehen oder Aufstehen, sowie
                           Schwierigkeiten im Umgang mit dem Haushalt.
@@ -150,11 +151,11 @@ function Startpage() {
                       </div>
                     </div>,
                     <div key="slide-3">
-                      <div className="border bg-blue-100 shadow-lg rounded-lg p-6">
-                        <h3 className="text-lg font-semibold mb-2 text-customBlue">
+                      <div className="border bg-blue-100 shadow-lg rounded-lg text-center p-4">
+                        <h3 className="text-lg font-rem font-semibold mb-2 text-customBlue">
                           Wer kann helfen, das festzustellen?
                         </h3>
-                        <p className="text-base font-sans text-sm sm:text-lg md:text-xl space-y-2 text-customBlue75">
+                        <p className="text-base font-rem leading-relaxed text-justify text-sm sm:text-lg md:text-xl space-y-2 text-customBlue75">
                           Pflegeberater, Hausärzte und Pflegedienste können eine
                           erste Einschätzung vornehmen. Sie bieten Beratung und
                           Unterstützung bei der Beurteilung des Pflegebedarfs
@@ -171,7 +172,7 @@ function Startpage() {
 
             <Link
               onClick={() => openModal("modal2")}
-              className="absolute underline text-customBlue75 text-sm sm:text-lg md:text-xl sm:w-auto w-full"
+              className="absolute underline text-customBlue75 font-rem text-sm sm:text-lg md:text-xl sm:w-auto w-full"
               style={{ top: "10%", left: "50%" }}
             >
               <span className="block sm:inline">Pflegegrad Einstufung</span>
@@ -182,7 +183,7 @@ function Startpage() {
               onClose={closeModal}
               title="Pflegegrad Einstufung"
               content={
-                <ul className="list-disc pl-5 space-y-2 text-gray-700">
+                <ul className="list-disc font-rem text-sm sm:text-lg md:text-xl space-y-2 text-customBlue75">
                   <li>Wie beantrage ich einen Pflegegrad?</li>
                   <li>Welche Unterlagen brauche ich?</li>
                   <li>Wie lange dauert die Bearbeitung?</li>
@@ -194,11 +195,11 @@ function Startpage() {
                   title: "Pflegegrad Einstufung",
                   slides: [
                     <div key="slide-1">
-                      <div className="border bg-blue-100 shadow-lg rounded-lg p-6">
-                        <h3 className="text-lg font-semibold mb-2 text-blue-900">
+                      <div className="border bg-blue-100 shadow-lg rounded-lg text-center p-4">
+                        <h3 className="text-lg font-rem font-semibold mb-2 text-customBlue75">
                           Wie beantrage ich einen Pflegegrad?
                         </h3>
-                        <p className="text-base font-sans text-gray-900">
+                        <p className="text-base font-rem leading-relaxed text-justify text-sm sm:text-lg md:text-xl space-y-2 text-customBlue75">
                           Den Pflegegrad beantragst du bei der Pflegekasse der
                           Krankenkasse der pflegebedürftigen Person. Der Antrag
                           kann formlos gestellt werden, meist per Brief oder
@@ -209,11 +210,11 @@ function Startpage() {
                       </div>
                     </div>,
                     <div key="slide-2">
-                      <div className="border  bg-blue-100 shadow-lg rounded-lg p-6">
-                        <h3 className="text-lg font-semibold mb-2 text-blue-900">
+                      <div className="border  bg-blue-100 shadow-lg rounded-lg text-center p-4">
+                        <h3 className="text-lg font-rem font-semibold mb-2 text-customBlue75">
                           Welche Unterlagen brauche ich?
                         </h3>
-                        <p className="text-base font-sans text-gray-900">
+                        <p className="text-base font-rem leading-relaxed text-justify text-sm sm:text-lg md:text-xl space-y-2 text-customBlue75">
                           Für den Antrag benötigst du ärztliche Befunde,
                           Krankenhausberichte und eventuell Berichte von
                           Pflegediensten. Auch eine eigene Dokumentation des
@@ -224,11 +225,11 @@ function Startpage() {
                       </div>
                     </div>,
                     <div key="slide-3">
-                      <div className="border  bg-blue-100 shadow-lg rounded-lg p-6">
-                        <h3 className="text-lg font-semibold mb-2 text-blue-900">
+                      <div className="border  bg-blue-100 shadow-lg rounded-lg text-center p-4">
+                        <h3 className="text-lg font-rem font-semibold mb-2 text-customBlue75">
                           Wie lange dauert die Bearbeitung?
                         </h3>
-                        <p className="text-base font-sans text-gray-900">
+                        <p className="text-base font-rem leading-relaxed text-justify text-sm sm:text-lg md:text-xl space-y-2 text-customBlue75">
                           Die Bearbeitung eines Antrags auf Pflegegrad dauert in
                           der Regel etwa 3 bis 5 Wochen. Der Medizinische Dienst
                           muss die Begutachtung innerhalb von 20 Arbeitstagen
@@ -244,7 +245,7 @@ function Startpage() {
 
             <Link
               onClick={() => openModal("modal3")}
-              className="absolute underline text-customBlue75 text-sm sm:text-lg md:text-xl sm:w-auto w-full"
+              className="absolute font-rem underline text-customBlue75 text-sm sm:text-lg md:text-xl sm:w-auto w-full md:px-24"
               style={{ top: "24%", left: "8%" }}
             >
               <span className="block sm:inline"> Planung der Pflege</span>
@@ -256,7 +257,7 @@ function Startpage() {
               title="Planung der Pflege
 "
               content={
-                <ul className="list-disc pl-5 space-y-2 text-gray-700">
+                <ul className="list-disc font-rem pl-5 space-y-2 text-customBlue75">
                   <li>Wie erstelle ich einen Pflegeplan?</li>
                   <li>Was muss ich dabei beachten?</li>
                   <li>Wie oft sollte ich den Plan anpassen?</li>
@@ -268,11 +269,11 @@ function Startpage() {
                   title: "Planung der Pflege",
                   slides: [
                     <div key="slide-1">
-                      <div className="border  bg-blue-100 shadow-lg rounded-lg p-6">
-                        <h3 className="text-lg font-semibold mb-2 text-blue-900">
+                      <div className="border  bg-blue-100 shadow-lg rounded-lg text-center p-4">
+                        <h3 className="text-lg font-rem font-semibold mb-2 text-customBlue75">
                           Wie erstelle ich einen Pflegeplan?
                         </h3>
-                        <p className="text-base font-sans text-gray-900">
+                        <p className="text-base font-rem leading-relaxed text-justify text-sm sm:text-lg md:text-xl space-y-2 text-customBlue75">
                           Ein Pflegeplan wird oft in Zusammenarbeit mit einem
                           Pflegedienst oder Pflegeberater erstellt. Er
                           berücksichtigt die individuellen Bedürfnisse der
@@ -284,11 +285,11 @@ function Startpage() {
                       </div>
                     </div>,
                     <div key="slide-2">
-                      <div className="border  bg-blue-100 shadow-lg rounded-lg p-6">
-                        <h3 className="text-lg font-semibold mb-2 text-blue-900">
+                      <div className="border  bg-blue-100 shadow-lg rounded-lg text-center p-4">
+                        <h3 className="text-lg font-rem font-semibold mb-2 text-customBlue75">
                           Was muss ich dabei beachten?
                         </h3>
-                        <p className="text-base font-sans text-gray-900">
+                        <p className="text-base font-rem leading-relaxed text-justify text-sm sm:text-lg md:text-xl space-y-2 text-customBlue75">
                           Bei der Erstellung eines Pflegeplans ist es wichtig,
                           die körperlichen und emotionalen Bedürfnisse der
                           Person zu berücksichtigen. Du solltest realistische
@@ -300,11 +301,11 @@ function Startpage() {
                       </div>
                     </div>,
                     <div key="slide-3">
-                      <div className="border bg-blue-100 shadow-lg rounded-lg p-6">
-                        <h3 className="text-lg font-semibold mb-2 text-blue-900">
+                      <div className="border bg-blue-100 shadow-lg rounded-lg text-center p-4">
+                        <h3 className="text-lg font-rem font-semibold mb-2 text-customBlue75">
                           Wie oft sollte ich den Plan anpassen?
                         </h3>
-                        <p className="text-base font-sans text-gray-900">
+                        <p className="text-base font-rem leading-relaxed text-justify text-sm sm:text-lg md:text-xl space-y-2 text-customBlue75">
                           Ein Pflegeplan sollte regelmäßig überprüft und bei
                           Bedarf angepasst werden. Vor allem bei
                           gesundheitlichen Veränderungen oder neuen
@@ -321,8 +322,8 @@ function Startpage() {
 
             <Link
               onClick={() => openModal("modal4")}
-              className="absolute underline text-customBlue75 text-sm sm:text-lg md:text-xl sm:w-auto w-full"
-              style={{ top: "37%", left: "11%" }}
+              className="absolute underline font-rem text-customBlue75 text-sm sm:text-lg md:text-xl sm:w-auto w-full"
+              style={{ top: "37%", left: "5%" }}
             >
               <span className="block sm:inline"> Praktische Unter-</span>
               <span className="block sm:inline"> stützung im Alltag </span>
@@ -333,7 +334,7 @@ function Startpage() {
               title="Praktische Unterstützung im Alltag
 "
               content={
-                <ul className="list-disc pl-5 space-y-2 text-gray-700">
+                <ul className="list-disc font-rem text-sm pl-5 space-y-2 text-customBlue75">
                   <li>Welche Hilfen gibt es im Alltag?</li>
                   <li>Wo finde ich Unterstützung in meiner Nähe?</li>
                   <li>Wie kann ich den Alltag erleichtern?</li>
@@ -345,11 +346,11 @@ function Startpage() {
                   title: "Praktische Unterstützung im Alltag",
                   slides: [
                     <div key="slide-1">
-                      <div className="border bg-blue-100 shadow-lg rounded-lg p-6">
-                        <h3 className="text-lg font-semibold mb-2 text-blue-900">
+                      <div className="border bg-blue-100 shadow-lg rounded-lg text-center p-4">
+                        <h3 className="text-lg font-semibold mb-2 text-customBlue75">
                           Welche Hilfen gibt es im Alltag?
                         </h3>
-                        <p className="text-base font-sans text-gray-900">
+                        <p className="text-base font-rem leading-relaxed text-justify text-sm sm:text-lg md:text-xl space-y-2 text-customBlue75">
                           Es gibt verschiedene Hilfen wie mobile Pflegedienste,
                           die bei der Körperpflege oder dem Haushalt
                           unterstützen. Auch Essen auf Rädern, Fahrdienste oder
@@ -361,11 +362,11 @@ function Startpage() {
                       </div>
                     </div>,
                     <div key="slide-2">
-                      <div className="border bg-blue-100 shadow-lg rounded-lg p-6">
-                        <h3 className="text-lg font-semibold mb-2 text-blue-900">
+                      <div className="border bg-blue-100 shadow-lg rounded-lg text-center p-4">
+                        <h3 className="text-lg font-rem font-semibold mb-2 text-customBlue75">
                           Wo finde ich Unterstützung in meiner Nähe?
                         </h3>
-                        <p className="text-base font-sans text-gray-900">
+                        <p className="text-base font-rem leading-relaxed text-justify text-sm sm:text-lg md:text-xl space-y-2 text-customBlue75">
                           Unterstützung findest du bei Pflegestützpunkten,
                           Sozialverbänden oder lokalen Pflegeberatungsstellen.
                           Auch Online-Datenbanken bieten eine Übersicht über
@@ -376,11 +377,11 @@ function Startpage() {
                       </div>
                     </div>,
                     <div key="slide-3">
-                      <div className="border bg-blue-100 shadow-lg rounded-lg p-6">
-                        <h3 className="text-lg font-semibold mb-2 text-blue-900">
+                      <div className="border bg-blue-100 shadow-lg rounded-lg text-center p-4">
+                        <h3 className="text-lg font-rem font-semibold mb-2 text-customBlue75">
                           Wie kann ich den Alltag erleichtern?
                         </h3>
-                        <p className="text-base font-sans text-gray-900">
+                        <p className="text-base font-rem leading-relaxed text-justify text-sm sm:text-lg md:text-xl space-y-2 text-customBlue75">
                           Alltagshilfen wie Rollatoren, Haltegriffe im Bad oder
                           Treppenlifte können die Mobilität und Sicherheit zu
                           Hause erhöhen. Ein strukturierter Tagesablauf mit
@@ -398,7 +399,7 @@ function Startpage() {
 
             <Link
               onClick={() => openModal("modal5")}
-              className="absolute underline text-customBlue75 text-sm sm:text-lg md:text-xl sm:w-auto w-full"
+              className="absolute underline font-rem text-customBlue75 text-sm sm:text-lg md:text-xl sm:w-auto w-full"
               style={{ top: "48%", left: "44%" }}
             >
               <span className="block sm:inline"> Finanzielle</span>
@@ -410,7 +411,7 @@ function Startpage() {
               title="Finanzielle Unterstützung
 "
               content={
-                <ul className="list-disc pl-5 space-y-2 text-gray-700">
+                <ul className="list-disc font-rem pl-5 space-y-2 text-customBlue75">
                   <li>Welche finanziellen Hilfen gibt es?</li>
                   <li>Wie beantrage ich Pflegegeld?</li>
                   <li>Gibt es steuerliche Vorteile?</li>
@@ -422,11 +423,11 @@ function Startpage() {
                   title: "Finanzielle Unterstützung",
                   slides: [
                     <div key="slide-1">
-                      <div className="border  bg-blue-100 shadow-lg rounded-lg p-6">
-                        <h3 className="text-lg font-semibold mb-2 text-blue-900">
+                      <div className="border  bg-blue-100 shadow-lg rounded-lg text-center p-4">
+                        <h3 className="text-lg font-rem font-semibold mb-2 text-customBlue75">
                           Welche finanziellen Hilfen gibt es?
                         </h3>
-                        <p className="text-base font-sans text-gray-900">
+                        <p className="text-base font-rem leading-relaxed text-justify text-sm sm:text-lg md:text-xl space-y-2 text-customBlue75">
                           Es gibt verschiedene finanzielle Hilfen wie
                           Pflegegeld, Pflegesachleistungen und Zuschüsse für
                           wohnumfeldverbessernde Maßnahmen. Auch Kurzzeit- und
@@ -437,11 +438,11 @@ function Startpage() {
                       </div>
                     </div>,
                     <div key="slide-2">
-                      <div className="border bg-blue-100 shadow-lg rounded-lg p-6">
-                        <h3 className="text-lg font-semibold mb-2 text-blue-900">
+                      <div className="border bg-blue-100 shadow-lg rounded-lg text-center p-4">
+                        <h3 className="text-lg font-rem font-semibold mb-2 text-customBlue75">
                           Wie beantrage ich Pflegegeld?
                         </h3>
-                        <p className="text-base font-sans text-gray-900">
+                        <p className="text-base font-rem leading-relaxed text-justify text-sm sm:text-lg md:text-xl space-y-2 text-customBlue75">
                           Pflegegeld beantragst du bei der Pflegekasse der
                           Krankenkasse der pflegebedürftigen Person. Nach der
                           Begutachtung durch den Medizinischen Dienst wird der
@@ -453,11 +454,11 @@ function Startpage() {
                       </div>
                     </div>,
                     <div key="slide-3">
-                      <div className="border bg-blue-100 shadow-lg rounded-lg p-6">
-                        <h3 className="text-lg font-semibold mb-2 text-blue-900">
+                      <div className="border bg-blue-100 shadow-lg rounded-lg text-center p-4">
+                        <h3 className="text-lg font-rem font-semibold mb-2 text-customBlue75">
                           Gibt es steuerliche Vorteile?
                         </h3>
-                        <p className="text-base font-sans text-gray-900">
+                        <p className="text-base font-rem leading-relaxed text-justify text-sm sm:text-lg md:text-xl space-y-2 text-customBlue75">
                           Ja, pflegende Angehörige können bestimmte Pflegekosten
                           steuerlich geltend machen, zum Beispiel Ausgaben für
                           Pflegepersonal oder Hilfsmittel. Auch ein
@@ -474,7 +475,7 @@ function Startpage() {
             />
             <Link
               onClick={() => openModal("modal6")}
-              className="absolute underline text-customBlue75 text-sm sm:text-lg md:text-xl sm:w-auto w-full"
+              className="absolute underline font-rem text-customBlue75 text-sm sm:text-lg md:text-xl sm:w-auto w-full"
               style={{ top: "62%", left: "17%" }}
             >
               <span className="block sm:inline"> Entlastung</span>
@@ -486,7 +487,7 @@ function Startpage() {
               title="Entlastung für Angehörige
 "
               content={
-                <ul className="list-disc pl-5 space-y-2 text-gray-700">
+                <ul className="list-disc font-rem pl-5 space-y-2 text-customBlue75">
                   <li>Welche Entlastungsmöglichkeiten gibt es?</li>
                   <li>Wie finde ich Kurzzeitpflege?</li>
                   <li>Gibt es Selbsthilfegruppen?</li>
@@ -498,13 +499,12 @@ function Startpage() {
                   title: "Entlastung für Angehörige",
                   slides: [
                     <div key="slide-1">
-                      <div className="border  bg-blue-100 shadow-lg rounded-lg p-6">
-                        <h3 className="text-lg font-semibold mb-2 text-blue-900">
+                      <div className="border  bg-blue-100 shadow-lg rounded-lg text-center p-4">
+                        <h3 className="text-lg font-rem font-semibold mb-2 text-blue-900">
                           Welche Entlastungsmöglichkeiten gibt es?
                         </h3>
-                        <p className="text-base font-sans text-gray-900">
-                          Entlastung bieten Pflegedienste, Tagespflege oder
-                          Kurzzeitpflegeeinrichtungen. Auch Verhinderungspflege,
+                        <p className="text-base font-rem leading-relaxed text-justify text-sm sm:text-lg md:text-xl text-customBlue75 text-customBlue75">
+                          Entlastung bieten Pflegedienste, Tagespflege oder Kurzzeitpflege einrichtungen. Auch Verhinderungspflege,
                           bei der professionelle Kräfte zeitweise die Pflege
                           übernehmen, kann eine wertvolle Hilfe sein.
                           Beratungsstellen unterstützen pflegende Angehörige
@@ -513,11 +513,11 @@ function Startpage() {
                       </div>
                     </div>,
                     <div key="slide-2">
-                      <div className="border bg-blue-100 shadow-lg rounded-lg p-6">
-                        <h3 className="text-lg font-semibold mb-2 text-blue-900">
+                      <div className="border bg-blue-100 shadow-lg rounded-lg text-center p-4">
+                        <h3 className="text-lg font-rem font-semibold mb-2 text-blue-900">
                           Wie finde ich Kurzzeitpflege?
                         </h3>
-                        <p className="text-base font-sans text-gray-900">
+                        <p className="text-base font-rem leading-relaxed text-justify text-sm sm:text-lg md:text-xl space-y-2 text-customBlue75">
                           Kurzzeitpflege kann über die Pflegekasse organisiert
                           werden. Es gibt spezialisierte Einrichtungen, die
                           vorübergehende Pflege anbieten, wenn Angehörige eine
@@ -528,11 +528,11 @@ function Startpage() {
                       </div>
                     </div>,
                     <div key="slide-3">
-                      <div className="border bg-blue-100 shadow-lg rounded-lg p-6">
-                        <h3 className="text-lg font-semibold mb-2 text-blue-900">
+                      <div className="border bg-blue-100 shadow-lg rounded-lg text-center p-4">
+                        <h3 className="text-lg font-rem font-semibold mb-2 text-blue-900">
                           Gibt es Selbsthilfegruppen?
                         </h3>
-                        <p className="text-base font-sans text-gray-900">
+                        <p className="text-base font-rem leading-relaxed text-justify text-sm sm:text-lg md:text-xl space-y-2 text-customBlue75">
                           Ja, es gibt viele Selbsthilfegruppen für pflegende
                           Angehörige, die den Austausch und gegenseitige
                           Unterstützung ermöglichen. Diese Gruppen bieten Raum
@@ -549,7 +549,7 @@ function Startpage() {
 
             <Link
               onClick={() => openModal("modal7")}
-              className="absolute underline text-customBlue75 text-sm sm:text-lg md:text-xl sm:w-auto w-full"
+              className="absolute underline text-customBlue75 font-rem text-sm sm:text-lg md:text-xl sm:w-auto w-full"
               style={{ top: "82%", left: "52%" }}
             >
               <span className="block sm:inline"> Umgang mit</span>
@@ -561,7 +561,7 @@ function Startpage() {
               title="Umgang mit Herausforderungen
 "
               content={
-                <ul className="list-disc pl-5 space-y-2 text-gray-700">
+                <ul className="list-disc font-rem pl-5 space-y-2 text-customBlue75">
                   <li>Wie gehe ich mit Stress um?</li>
                   <li>Was mache ich bei Konflikten?</li>
                   <li>Wie bewältige ich Überforderung?</li>
@@ -573,11 +573,11 @@ function Startpage() {
                   title: "Umgang mit Herausforderungen",
                   slides: [
                     <div key="slide-1">
-                      <div className="border  bg-blue-100 shadow-lg rounded-lg p-6">
-                        <h3 className="text-lg font-semibold mb-2 text-blue-900">
+                      <div className="border  bg-blue-100 shadow-lg rounded-lg text-center p-4">
+                        <h3 className="text-lg font-rem font-semibold mb-2 text-blue-900">
                           Wie gehe ich mit Stress um?
                         </h3>
-                        <p className="text-base font-sans text-gray-900">
+                        <p className="text-base font-rem leading-relaxed text-justify text-sm sm:text-lg md:text-xl space-y-2 text-customBlue75">
                           EnStress lässt sich durch klare Zeitplanung und
                           regelmäßige Pausen reduzieren. Entspannungstechniken
                           wie Atemübungen, Yoga oder Meditation können helfen,
@@ -588,11 +588,11 @@ function Startpage() {
                       </div>
                     </div>,
                     <div key="slide-2">
-                      <div className="border  bg-blue-100 shadow-lg rounded-lg p-6">
-                        <h3 className="text-lg font-semibold mb-2 text-blue-900">
+                      <div className="border  bg-blue-100 shadow-lg rounded-lg text-center p-4">
+                        <h3 className="text-lg font-rem font-semibold mb-2 text-blue-900">
                           Was mache ich bei Konflikten?
                         </h3>
-                        <p className="text-base font-sans text-gray-900">
+                        <p className="text-base font-rem leading-relaxed text-justify text-sm sm:text-lg md:text-xl space-y-2 text-customBlue75">
                           Bei Konflikten ist es wichtig, offen und ruhig zu
                           kommunizieren. Professionelle Mediation oder
                           Beratungen durch Pflegeberatungsstellen können helfen,
@@ -603,11 +603,11 @@ function Startpage() {
                       </div>
                     </div>,
                     <div key="slide-3">
-                      <div className="border  bg-blue-100 shadow-lg rounded-lg p-6">
-                        <h3 className="text-lg font-semibold mb-2 text-blue-900">
+                      <div className="border  bg-blue-100 shadow-lg rounded-lg text-center p-4">
+                        <h3 className="text-lg font-rem font-semibold mb-2 text-blue-900">
                           Wie bewältige ich Überforderung?
                         </h3>
-                        <p className="text-base font-sans text-gray-900">
+                        <p className="text-base font-rem leading-relaxed text-justify text-sm sm:text-lg md:text-xl space-y-2 text-customBlue75">
                           Bei Überforderung ist es wichtig, frühzeitig Hilfe
                           anzunehmen und sich selbst Grenzen zu setzen.
                           Entlastungsangebote wie Verhinderungspflege,
@@ -623,7 +623,7 @@ function Startpage() {
             />
           </div>
 
-          <div className="fixed bottom-16 left-1/2 transform -translate-x-1/2  z-50">
+          <div className="fixed bottom-28 left-1/2 transform -translate-x-1/2  z-50">
             {isAtBottom ? (
               <FaChevronUp
                 size={24}

@@ -48,7 +48,7 @@ function Slidepage() {
   return (
     <div className="p-4 md:p-16" style={{ position: 'relative' }}>
       <button
-        className="bg-customBlue text-white py-2 px-4 rounded-full mt-20 py-2 px-4"
+        className="bg-customBlue text-white font-rem py-2 px-4 rounded-full mt-20 py-2 px-4"
         onClick={handleBack}
       >
         Zurück
@@ -91,9 +91,9 @@ function Slidepage() {
         <p className="text-center mt-4">No slides available.</p>
       )}
 
-      {/* Dots and Share Icon */}
+     
       <div className="flex justify-center items-center mt-6 space-x-4">
-        {/* Navigation dots */}
+
         <div className="flex space-x-2">
           {slides && slides.map((_, index) => (
             <button
@@ -107,7 +107,7 @@ function Slidepage() {
           ))}
         </div>
 
-        {/* Share icon */}
+      
         <button
           className="text-gray-500 hover:text-gray-700 ml-4"
           onClick={toggleShareOptions}
@@ -117,11 +117,11 @@ function Slidepage() {
         </button>
       </div>
 
-      {/* Share options panel */}
+
       {isShareOpen && (
         <div className="fixed bottom-20 left-0 right-0 mt-4 p-4 bg-gray-100 rounded-lg shadow-lg z-50">
           <div className="flex justify-between items-center">
-            <p className="text-center text-blue-900 font-semibold mb-4">
+            <p className="text-center text-blue-900 font-rem font-semibold mb-4">
               Share this page:
             </p>
             <button onClick={toggleShareOptions} aria-label="Close share options">

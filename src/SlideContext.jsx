@@ -13,5 +13,5 @@ export const SlideProvider = ({ children }) => {
   );
 };
 
-// Custom hook to use SlideContext
+
 export const useSlideData = () => useContext(SlideContext);
