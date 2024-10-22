@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
-import './Startpage.css'
+import "./Startpage.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useSlideData } from "./SlideContext";
 import image from "./assets/carepic.png";
 import Path from "./assets/Path.svg";
 import Modal from "./Modal";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
+import image1 from './assets/firstcircle.png'
+import image2 from './assets/secondcircle.png'
+import image3 from './assets/thirdcircle.png'
 
 function Startpage() {
   const [activeModal, setActiveModal] = useState(null);
@@ -20,7 +23,9 @@ function Startpage() {
     closeModal();
     navigate("/slidepage");
   };
-
+  const handleBack = () => {
+    navigate("/");
+  };
   // const [isModalOpen, setModalOpen] = useState(false);
   // const openModal = () => setModalOpen(true);
   // const closeModal = () => setModalOpen(false);
@@ -36,7 +41,16 @@ function Startpage() {
     } else {
       setIsAtBottom(false);
     }
+    if (scrollTop > lastScrollTop) {
+  
+      setIsHeaderVisible(false);
+    } else {
+     
+      setIsHeaderVisible(true);
   };
+
+  setLastScrollTop(scrollTop);
+};
 
   const handleScrollToggle = () => {
     if (isAtBottom) {
@@ -62,11 +76,11 @@ function Startpage() {
 
   return (
     <div className="min-h-screen flex flex-col overflow-x-hidden">
-      <main className="flex-grow mt-12 mb-16">
-        <div className="container relative w-full max-w-4xl  px-4 py-8 md:px-16 py-16 w-full">
+      <main className="flex-grow mt-12 mb-16 ">
+        <div className="container relative w-full max-w-4xl  px-4 py-8 md:px-16 py-16 w-full md:mt-10">
           <div className="flex justify-between mx-auto mb-6 border rounded border-blue-200 bg-blue-100 w-full md:w-full lg:w-full ">
-            <div className="flex flex-col justify-center flex-1">
-              <h2 className="text-lg text-center sm:text-2xl md:text-3xl text-customBlue font-bold ">
+            <div className="flex flex-col justify-center flex-1 ">
+              <h2 className="text-lg ml-1 sm:text-2xl md:text-3xl  text-customBlue font-semibold">
                 Die Reise geht los!
               </h2>
               <p className="whitespace-normal px-2 text-sm sm:text-lg md:text-xl text-customBlue font-rem">
@@ -76,12 +90,12 @@ function Startpage() {
             </div>
 
             <div className="flex-shrink-0">
-          <img
-            className="w-36 h-28 object-cover rounded-full"
-            src={image}
-            alt="Description"
-          />
-        </div>
+              <img
+                className="w-36 h-28 object-cover rounded-full"
+                src={image}
+                alt="Description"
+              />
+            </div>
           </div>
 
           <div
@@ -96,12 +110,12 @@ function Startpage() {
             <Link
               onClick={() => openModal("modal1")}
               className="absolute underline text-customBlue75 font-rem text-sm sm:text-lg md:text-xl w-auto sm:w-auto w-full "
-              style={{ top: "0.2%", left: "9%"  }}
+              style={{ top: "0.2%", left: "9%" }}
             >
               <span className="block sm:inline">Erkennung von</span>
               <span className="block sm:inline">Pflegebedürftigkeit</span>
             </Link>
-            <Modal
+            <Modal 
               isOpen={activeModal === "modal1"}
               onClose={closeModal}
               title="Erkennung von Pflegebedürftigkeit"
@@ -112,14 +126,22 @@ function Startpage() {
                   <li>Wer kann helfen, das festzustellen?</li>
                 </ul>
               }
-              actionLabel="Mehr Erfahren"
+              actionLabel="Mehr erfahren"
               onAction={() =>
                 handleNavigateToSlide({
-                  title: "Erkennung von Pflegebedürftigkeit",
+                  title:(<span className="flex items-center ">
+                    <img 
+                      src={image1}
+                      alt="number icon" 
+                      className="w-8 h-8 mr-2" 
+                    />
+                    <span className="-ml-1">Erkennung von </span>
+                    <span > Pflegebedürftigkeit</span>
+                  </span>),
                   slides: [
                     <div key="slide-1">
                       <div className="border bg-blue-100 shadow-lg rounded-lg text-center p-4 ">
-                        <h3 className="text-lg font-rem font-semibold mb-2 text-customBlue">
+                        <h3 className="text-lg text-left font-rem font-semibold mb-2 text-customBlue">
                           Wie erkenne ich Pflegebedürftigkeit?
                         </h3>
                         <p className="text-base font-rem leading-relaxed text-justify text-sm sm:text-lg md:text-xl space-y-2 text-customBlue75">
@@ -136,7 +158,7 @@ function Startpage() {
                     </div>,
                     <div key="slide-2">
                       <div className="border bg-blue-100 shadow-lg rounded-lg text-center p-4">
-                        <h3 className="text-lg font-rem font-semibold mb-2 text-customBlue">
+                        <h3 className="text-lg text-left font-rem font-semibold mb-2 text-customBlue">
                           Welche Anzeichen gibt es?
                         </h3>
                         <p className="text-base font-rem leading-relaxed text-justify text-sm sm:text-lg md:text-xl space-y-2 text-customBlue75">
@@ -152,7 +174,7 @@ function Startpage() {
                     </div>,
                     <div key="slide-3">
                       <div className="border bg-blue-100 shadow-lg rounded-lg text-center p-4">
-                        <h3 className="text-lg font-rem font-semibold mb-2 text-customBlue">
+                        <h3 className="text-lg text-left font-rem font-semibold mb-2 text-customBlue">
                           Wer kann helfen, das festzustellen?
                         </h3>
                         <p className="text-base font-rem leading-relaxed text-justify text-sm sm:text-lg md:text-xl space-y-2 text-customBlue75">
@@ -165,6 +187,16 @@ function Startpage() {
                         </p>
                       </div>
                     </div>,
+                    <div key="slide-4">
+                      <div className="border bg-blue-100 shadow-lg rounded-lg text-center p-4">
+                        <button
+                          className="bg-customBlue text-white font-rem py-2 px-4 rounded-full mt-20 mb-20"
+                          onClick={handleBack}
+                        >
+                          Zurück zum PflegePfad
+                        </button>
+                      </div>
+                    </div>,
                   ],
                 })
               }
@@ -175,6 +207,7 @@ function Startpage() {
               className="absolute underline text-customBlue75 font-rem text-sm sm:text-lg md:text-xl sm:w-auto w-full"
               style={{ top: "10%", left: "50%" }}
             >
+              
               <span className="block sm:inline">Pflegegrad Einstufung</span>
               <span className="block sm:inline"></span>
             </Link>
@@ -189,14 +222,21 @@ function Startpage() {
                   <li>Wie lange dauert die Bearbeitung?</li>
                 </ul>
               }
-              actionLabel="Mehr Erfahren"
+              actionLabel="Mehr erfahren"
               onAction={() =>
                 handleNavigateToSlide({
-                  title: "Pflegegrad Einstufung",
+                  title:(<span className="flex ml-4">
+                    <img 
+                      src={image2}
+                      alt="number icon" 
+                      className="w-8 h-8 mr-4" 
+                    />
+                    Pflegegrad Einstufung
+                  </span>),
                   slides: [
                     <div key="slide-1">
                       <div className="border bg-blue-100 shadow-lg rounded-lg text-center p-4">
-                        <h3 className="text-lg font-rem font-semibold mb-2 text-customBlue75">
+                        <h3 className="text-lg text-left font-rem font-semibold mb-2 text-customBlue75">
                           Wie beantrage ich einen Pflegegrad?
                         </h3>
                         <p className="text-base font-rem leading-relaxed text-justify text-sm sm:text-lg md:text-xl space-y-2 text-customBlue75">
@@ -211,7 +251,7 @@ function Startpage() {
                     </div>,
                     <div key="slide-2">
                       <div className="border  bg-blue-100 shadow-lg rounded-lg text-center p-4">
-                        <h3 className="text-lg font-rem font-semibold mb-2 text-customBlue75">
+                        <h3 className="text-lg text-left font-rem font-semibold mb-2 text-customBlue75">
                           Welche Unterlagen brauche ich?
                         </h3>
                         <p className="text-base font-rem leading-relaxed text-justify text-sm sm:text-lg md:text-xl space-y-2 text-customBlue75">
@@ -226,7 +266,7 @@ function Startpage() {
                     </div>,
                     <div key="slide-3">
                       <div className="border  bg-blue-100 shadow-lg rounded-lg text-center p-4">
-                        <h3 className="text-lg font-rem font-semibold mb-2 text-customBlue75">
+                        <h3 className="text-lg text-left font-rem font-semibold mb-2 text-customBlue75">
                           Wie lange dauert die Bearbeitung?
                         </h3>
                         <p className="text-base font-rem leading-relaxed text-justify text-sm sm:text-lg md:text-xl space-y-2 text-customBlue75">
@@ -249,7 +289,7 @@ function Startpage() {
               style={{ top: "24%", left: "8%" }}
             >
               <span className="block sm:inline"> Planung der Pflege</span>
-              <span className="block sm:inline">  </span>
+              <span className="block sm:inline"> </span>
             </Link>
             <Modal
               isOpen={activeModal === "modal3"}
@@ -263,14 +303,22 @@ function Startpage() {
                   <li>Wie oft sollte ich den Plan anpassen?</li>
                 </ul>
               }
-              actionLabel="Mehr Erfahren"
+              actionLabel="Mehr erfahren"
               onAction={() =>
                 handleNavigateToSlide({
-                  title: "Planung der Pflege",
+                  title:(<span className="flex items-center ">
+                    <img 
+                      src={image3}
+                      alt="number icon" 
+                      className="w-8 h-8 mr-2 ml-2" 
+                    />
+                    <span className="-ml-1">Planung der</span>
+                    <span > Pflege</span>
+                  </span>),
                   slides: [
                     <div key="slide-1">
                       <div className="border  bg-blue-100 shadow-lg rounded-lg text-center p-4">
-                        <h3 className="text-lg font-rem font-semibold mb-2 text-customBlue75">
+                        <h3 className="text-lg text-left font-rem font-semibold mb-2 text-customBlue75">
                           Wie erstelle ich einen Pflegeplan?
                         </h3>
                         <p className="text-base font-rem leading-relaxed text-justify text-sm sm:text-lg md:text-xl space-y-2 text-customBlue75">
@@ -286,7 +334,7 @@ function Startpage() {
                     </div>,
                     <div key="slide-2">
                       <div className="border  bg-blue-100 shadow-lg rounded-lg text-center p-4">
-                        <h3 className="text-lg font-rem font-semibold mb-2 text-customBlue75">
+                        <h3 className="text-lg text-left font-rem font-semibold mb-2 text-customBlue75">
                           Was muss ich dabei beachten?
                         </h3>
                         <p className="text-base font-rem leading-relaxed text-justify text-sm sm:text-lg md:text-xl space-y-2 text-customBlue75">
@@ -302,7 +350,7 @@ function Startpage() {
                     </div>,
                     <div key="slide-3">
                       <div className="border bg-blue-100 shadow-lg rounded-lg text-center p-4">
-                        <h3 className="text-lg font-rem font-semibold mb-2 text-customBlue75">
+                        <h3 className="text-lg text-left font-rem font-semibold mb-2 text-customBlue75">
                           Wie oft sollte ich den Plan anpassen?
                         </h3>
                         <p className="text-base font-rem leading-relaxed text-justify text-sm sm:text-lg md:text-xl space-y-2 text-customBlue75">
@@ -340,14 +388,14 @@ function Startpage() {
                   <li>Wie kann ich den Alltag erleichtern?</li>
                 </ul>
               }
-              actionLabel="Mehr Erfahren"
+              actionLabel="Mehr erfahren"
               onAction={() =>
                 handleNavigateToSlide({
                   title: "Praktische Unterstützung im Alltag",
                   slides: [
                     <div key="slide-1">
                       <div className="border bg-blue-100 shadow-lg rounded-lg text-center p-4">
-                        <h3 className="text-lg font-semibold mb-2 text-customBlue75">
+                        <h3 className="text-lg text-left font-semibold mb-2 text-customBlue75">
                           Welche Hilfen gibt es im Alltag?
                         </h3>
                         <p className="text-base font-rem leading-relaxed text-justify text-sm sm:text-lg md:text-xl space-y-2 text-customBlue75">
@@ -363,7 +411,7 @@ function Startpage() {
                     </div>,
                     <div key="slide-2">
                       <div className="border bg-blue-100 shadow-lg rounded-lg text-center p-4">
-                        <h3 className="text-lg font-rem font-semibold mb-2 text-customBlue75">
+                        <h3 className="text-lg text-left font-rem font-semibold mb-2 text-customBlue75">
                           Wo finde ich Unterstützung in meiner Nähe?
                         </h3>
                         <p className="text-base font-rem leading-relaxed text-justify text-sm sm:text-lg md:text-xl space-y-2 text-customBlue75">
@@ -378,7 +426,7 @@ function Startpage() {
                     </div>,
                     <div key="slide-3">
                       <div className="border bg-blue-100 shadow-lg rounded-lg text-center p-4">
-                        <h3 className="text-lg font-rem font-semibold mb-2 text-customBlue75">
+                        <h3 className="text-lg text-left font-rem font-semibold mb-2 text-customBlue75">
                           Wie kann ich den Alltag erleichtern?
                         </h3>
                         <p className="text-base font-rem leading-relaxed text-justify text-sm sm:text-lg md:text-xl space-y-2 text-customBlue75">
@@ -417,14 +465,14 @@ function Startpage() {
                   <li>Gibt es steuerliche Vorteile?</li>
                 </ul>
               }
-              actionLabel="Mehr Erfahren"
+              actionLabel="Mehr erfahren"
               onAction={() =>
                 handleNavigateToSlide({
                   title: "Finanzielle Unterstützung",
                   slides: [
                     <div key="slide-1">
                       <div className="border  bg-blue-100 shadow-lg rounded-lg text-center p-4">
-                        <h3 className="text-lg font-rem font-semibold mb-2 text-customBlue75">
+                        <h3 className="text-lg text-left font-rem font-semibold mb-2 text-customBlue75">
                           Welche finanziellen Hilfen gibt es?
                         </h3>
                         <p className="text-base font-rem leading-relaxed text-justify text-sm sm:text-lg md:text-xl space-y-2 text-customBlue75">
@@ -439,7 +487,7 @@ function Startpage() {
                     </div>,
                     <div key="slide-2">
                       <div className="border bg-blue-100 shadow-lg rounded-lg text-center p-4">
-                        <h3 className="text-lg font-rem font-semibold mb-2 text-customBlue75">
+                        <h3 className="text-lg text-left font-rem font-semibold mb-2 text-customBlue75">
                           Wie beantrage ich Pflegegeld?
                         </h3>
                         <p className="text-base font-rem leading-relaxed text-justify text-sm sm:text-lg md:text-xl space-y-2 text-customBlue75">
@@ -455,7 +503,7 @@ function Startpage() {
                     </div>,
                     <div key="slide-3">
                       <div className="border bg-blue-100 shadow-lg rounded-lg text-center p-4">
-                        <h3 className="text-lg font-rem font-semibold mb-2 text-customBlue75">
+                        <h3 className="text-lg text-left font-rem font-semibold mb-2 text-customBlue75">
                           Gibt es steuerliche Vorteile?
                         </h3>
                         <p className="text-base font-rem leading-relaxed text-justify text-sm sm:text-lg md:text-xl space-y-2 text-customBlue75">
@@ -493,28 +541,30 @@ function Startpage() {
                   <li>Gibt es Selbsthilfegruppen?</li>
                 </ul>
               }
-              actionLabel="Mehr Erfahren"
+              actionLabel="Mehr erfahren"
               onAction={() =>
                 handleNavigateToSlide({
                   title: "Entlastung für Angehörige",
                   slides: [
                     <div key="slide-1">
                       <div className="border  bg-blue-100 shadow-lg rounded-lg text-center p-4">
-                        <h3 className="text-lg font-rem font-semibold mb-2 text-blue-900">
+                        <h3 className="text-lg text-left font-rem font-semibold mb-2 text-blue-900">
                           Welche Entlastungsmöglichkeiten gibt es?
                         </h3>
                         <p className="text-base font-rem leading-relaxed text-justify text-sm sm:text-lg md:text-xl text-customBlue75 text-customBlue75">
-                          Entlastung bieten Pflegedienste, Tagespflege oder Kurzzeitpflege einrichtungen. Auch Verhinderungspflege,
-                          bei der professionelle Kräfte zeitweise die Pflege
-                          übernehmen, kann eine wertvolle Hilfe sein.
-                          Beratungsstellen unterstützen pflegende Angehörige
-                          dabei, passende Entlastungsangebote zu finden.
+                          Entlastung bieten Pflegedienste, Tagespflege oder
+                          Kurzzeitpflege einrichtungen. Auch
+                          Verhinderungspflege, bei der professionelle Kräfte
+                          zeitweise die Pflege übernehmen, kann eine wertvolle
+                          Hilfe sein. Beratungsstellen unterstützen pflegende
+                          Angehörige dabei, passende Entlastungsangebote zu
+                          finden.
                         </p>
                       </div>
                     </div>,
                     <div key="slide-2">
                       <div className="border bg-blue-100 shadow-lg rounded-lg text-center p-4">
-                        <h3 className="text-lg font-rem font-semibold mb-2 text-blue-900">
+                        <h3 className="text-lg text-left font-rem font-semibold mb-2 text-blue-900">
                           Wie finde ich Kurzzeitpflege?
                         </h3>
                         <p className="text-base font-rem leading-relaxed text-justify text-sm sm:text-lg md:text-xl space-y-2 text-customBlue75">
@@ -529,7 +579,7 @@ function Startpage() {
                     </div>,
                     <div key="slide-3">
                       <div className="border bg-blue-100 shadow-lg rounded-lg text-center p-4">
-                        <h3 className="text-lg font-rem font-semibold mb-2 text-blue-900">
+                        <h3 className="text-lg text-left font-rem font-semibold mb-2 text-blue-900">
                           Gibt es Selbsthilfegruppen?
                         </h3>
                         <p className="text-base font-rem leading-relaxed text-justify text-sm sm:text-lg md:text-xl space-y-2 text-customBlue75">
@@ -567,14 +617,14 @@ function Startpage() {
                   <li>Wie bewältige ich Überforderung?</li>
                 </ul>
               }
-              actionLabel="Mehr Erfahren"
+              actionLabel="Mehr erfahren"
               onAction={() =>
                 handleNavigateToSlide({
                   title: "Umgang mit Herausforderungen",
                   slides: [
                     <div key="slide-1">
                       <div className="border  bg-blue-100 shadow-lg rounded-lg text-center p-4">
-                        <h3 className="text-lg font-rem font-semibold mb-2 text-blue-900">
+                        <h3 className="text-lg text-left font-rem font-semibold mb-2 text-blue-900">
                           Wie gehe ich mit Stress um?
                         </h3>
                         <p className="text-base font-rem leading-relaxed text-justify text-sm sm:text-lg md:text-xl space-y-2 text-customBlue75">
@@ -589,7 +639,7 @@ function Startpage() {
                     </div>,
                     <div key="slide-2">
                       <div className="border  bg-blue-100 shadow-lg rounded-lg text-center p-4">
-                        <h3 className="text-lg font-rem font-semibold mb-2 text-blue-900">
+                        <h3 className="text-lg text-left font-rem font-semibold mb-2 text-blue-900">
                           Was mache ich bei Konflikten?
                         </h3>
                         <p className="text-base font-rem leading-relaxed text-justify text-sm sm:text-lg md:text-xl space-y-2 text-customBlue75">
@@ -604,7 +654,7 @@ function Startpage() {
                     </div>,
                     <div key="slide-3">
                       <div className="border  bg-blue-100 shadow-lg rounded-lg text-center p-4">
-                        <h3 className="text-lg font-rem font-semibold mb-2 text-blue-900">
+                        <h3 className="text-lg text-left font-rem font-semibold mb-2 text-blue-900">
                           Wie bewältige ich Überforderung?
                         </h3>
                         <p className="text-base font-rem leading-relaxed text-justify text-sm sm:text-lg md:text-xl space-y-2 text-customBlue75">
@@ -623,7 +673,7 @@ function Startpage() {
             />
           </div>
 
-          <div className="fixed bottom-28 left-1/2 transform -translate-x-1/2  z-50">
+          <div className="fixed bottom-16 left-1/2 transform -translate-x-1/2  z-50">
             {isAtBottom ? (
               <FaChevronUp
                 size={24}

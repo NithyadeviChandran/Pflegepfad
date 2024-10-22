@@ -13,7 +13,7 @@ function Slidepage() {
   const [isShareOpen, setIsShareOpen] = useState(false);
 
   const nextSlide = () => {
-    setCurrentSlide((prevSlide) => (prevSlide + 1) % slides.length); // Loop back to first slide
+    setCurrentSlide((prevSlide) => (prevSlide + 1) % slides.length); 
   };
 
   const prevSlide = () => {
@@ -31,9 +31,9 @@ function Slidepage() {
   const toggleShareOptions = () => {
     setIsShareOpen((prev) => {
       if (!prev) {
-        document.body.style.overflow = 'hidden'; // Prevent scrolling when share options are open
+        document.body.style.overflow = 'hidden'; 
       } else {
-        document.body.style.overflow = 'auto'; // Allow scrolling when share options are closed
+        document.body.style.overflow = 'auto'; 
       }
       return !prev;
     });
@@ -41,7 +41,7 @@ function Slidepage() {
 
   useEffect(() => {
     return () => {
-      document.body.style.overflow = 'auto'; // Reset overflow when component unmounts
+      document.body.style.overflow = 'auto'; 
     };
   }, []);
 
@@ -58,13 +58,12 @@ function Slidepage() {
         {title || "No Title"}
       </h2>
 
-      {/* Check if slides exist and have content */}
       {slides && slides.length > 0 ? (
         <div className="relative">
-          {/* Slide navigation arrows */}
+        
           {currentSlide > 0 && (
             <button
-              className="absolute left-0 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700"
+              className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700"
               onClick={prevSlide}
               aria-label="Previous slide"
             >
@@ -72,14 +71,14 @@ function Slidepage() {
             </button>
           )}
 
-          {/* Display the actual React element from slides */}
-          <div className="text-center p-4">
-            {slides[currentSlide]} {/* This renders the React element */}
+        
+          <div className="text-center p-4 mb-4">
+            {slides[currentSlide]} 
           </div>
 
           {currentSlide < slides.length - 1 && (
             <button
-              className="absolute right-0 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700"
+              className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700"
               onClick={nextSlide}
               aria-label="Next slide"
             >
@@ -119,7 +118,7 @@ function Slidepage() {
 
 
       {isShareOpen && (
-        <div className="fixed bottom-20 left-0 right-0 mt-4 p-4 bg-gray-100 rounded-lg shadow-lg z-50">
+        <div className="fixed bottom-20 rounded-lg left-8 right-8 mt-2 bg-blue-100  z-50">
           <div className="flex justify-between items-center">
             <p className="text-center text-blue-900 font-rem font-semibold mb-4">
               Share this page:
@@ -151,7 +150,7 @@ function Slidepage() {
 
             {/* WhatsApp */}
             <a
-              href="https://wa.me/yourphonenumber" // Replace with your actual phone number
+              href="https://wa.me/04915730106001" 
               target="_blank"
               rel="noopener noreferrer"
               className="flex flex-col items-center text-blue-900"
