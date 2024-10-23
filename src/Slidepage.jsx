@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link} from "react-router-dom";
 import { useSlideData } from "./SlideContext";
 import { HiOutlineShare } from "react-icons/hi";
+import arrow from './assets/arrow.png'
 import { FaFacebook, FaWhatsapp, FaEnvelope, FaSms, FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 function Slidepage() {
@@ -46,13 +47,16 @@ function Slidepage() {
   }, []);
 
   return (
-    <div className="p-4 md:p-16" style={{ position: 'relative' }}>
-      <button
-        className="bg-customBlue text-white font-rem py-2 px-4 rounded-full mt-20 py-2 px-4"
+    <div className="p-4 mt-16 md:p-16" style={{ position: 'relative' }}>
+      <Link
+        className="text-gray-500 flex items-center font-rem py-2 px-4 py-2 px-4"
         onClick={handleBack}
       >
+         <img className="h-4 w-4"
+      src={arrow}
+      />
         Zurück
-      </button>
+      </Link>
 
       <h2 className="text-lg font-semibold text-blue-900 mt-4 mb-4 text-center sm:text-2xl md:text-3xl">
         {title || "No Title"}
@@ -72,9 +76,11 @@ function Slidepage() {
           )}
 
         
-          <div className="text-center p-4 mb-4">
+          <div className="text-center p-4 mb-4 flex items-center justify-center h-[40 rem] md:h-[45rem]">
+         
             {slides[currentSlide]} 
           </div>
+     
 
           {currentSlide < slides.length - 1 && (
             <button
@@ -85,20 +91,16 @@ function Slidepage() {
               <FaChevronRight size={28} />
             </button>
           )}
-        </div>
-      ) : (
-        <p className="text-center mt-4">No slides available.</p>
-      )}
+        
 
      
-      <div className="flex justify-center items-center mt-6 space-x-4">
-
-        <div className="flex space-x-2">
+      <div className="absolute bottom-4 left-0 right-0 flex justify-center items-center space-x-4">
+        <div className="flex p-2 space-x-2">
           {slides && slides.map((_, index) => (
             <button
               key={index}
               className={`h-3 w-3 rounded-full ${
-                currentSlide === index ? "bg-blue-500" : "bg-gray-300"
+                currentSlide === index ? "bg-blue-900" : "bg-gray-300"
               }`}
               onClick={() => setCurrentSlide(index)}
               aria-label={`Go to slide ${index + 1}`}
@@ -106,15 +108,18 @@ function Slidepage() {
           ))}
         </div>
 
-      
         <button
-          className="text-gray-500 hover:text-gray-700 ml-4"
+          className="text-customBlue hover:text-gray-700 mx-16"
           onClick={toggleShareOptions}
           aria-label="Share this page"
         >
           <HiOutlineShare size={28} />
         </button>
       </div>
+      </div>
+      ) : (
+        <p className="text-center mt-4">No slides available.</p>
+      )}
 
 
       {isShareOpen && (
