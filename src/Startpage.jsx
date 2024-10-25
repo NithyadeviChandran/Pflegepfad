@@ -9,6 +9,10 @@ import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 import image1 from './assets/firstcircle.png'
 import image2 from './assets/secondcircle.png'
 import image3 from './assets/thirdcircle.png'
+import image4 from './assets/fourthcircle.png'
+import image5 from './assets/fifthcircle.png'
+import image6 from './assets/sixthcircle.png'
+import image7 from './assets/seventhcircle.png'
 import search from './assets/search.png'
 
 function Startpage() {
@@ -27,12 +31,8 @@ function Startpage() {
   const handleBack = () => {
     navigate("/");
   };
-  // const [isModalOpen, setModalOpen] = useState(false);
-  // const openModal = () => setModalOpen(true);
-  // const closeModal = () => setModalOpen(false);
+
   const [isAtBottom, setIsAtBottom] = useState(false);
-  const [lastScrollTop, setLastScrollTop] = useState(0);
-  const [isHeaderVisible, setIsHeaderVisible] = useState(true)
 
   const handleScroll = () => {
     const windowHeight = window.innerHeight;
@@ -44,15 +44,7 @@ function Startpage() {
     } else {
       setIsAtBottom(false);
     }
-    if (scrollTop > lastScrollTop) {
-  
-      setIsHeaderVisible(false);
-    } else {
-     
-      setIsHeaderVisible(true);
-  };
 
-  setLastScrollTop(scrollTop);
 };
 
   const handleScrollToggle = () => {
@@ -107,11 +99,13 @@ function Startpage() {
             <p className="whitespace-normal px-2 text-sm sm:text-lg md:text-xl text-customBlue font-rem">Hier eine Beratungsstelle oder einen Versorgungsanbieter finden</p>
           </div>
           <div className="flex-shrink-0">
+          <Link to= "https://pflegefinder.bayern.recaresolutions.com/providersearch/bavaria?return_url=%2Fprovidersearch%2Fbavaria" > 
           <img
                 className="w-12 h-12 items-center "
                 src={search}
                 alt="search icon"
               />
+              </Link>
           </div>
           </div>
 
@@ -397,8 +391,7 @@ function Startpage() {
             <Modal
               isOpen={activeModal === "modal4"}
               onClose={closeModal}
-              title="Praktische Unterstützung im Alltag
-"
+              title="Praktische Unterstützung im Alltag"
               content={
                 <ul className="list-disc font-rem text-sm pl-5 space-y-2 text-customBlue75">
                   <li>Welche Hilfen gibt es im Alltag?</li>
@@ -409,7 +402,16 @@ function Startpage() {
               actionLabel="Mehr erfahren"
               onAction={() =>
                 handleNavigateToSlide({
-                  title: "Praktische Unterstützung im Alltag",
+                  
+                  title:(<span className="flex items-center ">
+                    <img 
+                      src={image4}
+                      alt="number icon" 
+                      className="w-8 h-8 mr-2 ml-4" 
+                    />
+                    <span >Praktische Unterstützung im Alltag</span>
+                   
+                  </span>),
                   slides: [
                     <div key="slide-1">
                       <div className="border bg-blue-100 shadow-lg rounded-lg text-center p-4">
@@ -486,7 +488,14 @@ function Startpage() {
               actionLabel="Mehr erfahren"
               onAction={() =>
                 handleNavigateToSlide({
-                  title: "Finanzielle Unterstützung",
+                  title:(<span className="flex items-center ">
+                    <img 
+                      src={image5}
+                      alt="number icon" 
+                      className="w-8 h-8 mr-2 ml-4" 
+                    />
+                    <span >Finanzielle Unterstützung</span>
+                  </span>),
                   slides: [
                     <div key="slide-1">
                       <div className="border  bg-blue-100 shadow-lg rounded-lg text-center p-4">
@@ -562,7 +571,14 @@ function Startpage() {
               actionLabel="Mehr erfahren"
               onAction={() =>
                 handleNavigateToSlide({
-                  title: "Entlastung für Angehörige",
+                  title:(<span className="flex items-center ">
+                    <img 
+                      src={image6}
+                      alt="number icon" 
+                      className="w-8 h-8 mr-2 ml-4" 
+                    />
+                    <span >Entlastung für Angehörige</span>
+                  </span>),
                   slides: [
                     <div key="slide-1">
                       <div className="border  bg-blue-100 shadow-lg rounded-lg text-center p-4">
@@ -638,7 +654,14 @@ function Startpage() {
               actionLabel="Mehr erfahren"
               onAction={() =>
                 handleNavigateToSlide({
-                  title: "Umgang mit Herausforderungen",
+                  title:(<span className="flex items-center ">
+                    <img 
+                      src={image7}
+                      alt="number icon" 
+                      className="w-8 h-8 mr-2 ml-4" 
+                    />
+                    <span >Umgang mit Herausforderungen</span>
+                  </span>),
                   slides: [
                     <div key="slide-1">
                       <div className="border  bg-blue-100 shadow-lg rounded-lg text-center p-4">
