@@ -1,6 +1,7 @@
 {
   "name": "pflegepfad",
   "private": true,
+  "homepage":"https://github.com/NithyadeviChandran/Pflegepfad",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
