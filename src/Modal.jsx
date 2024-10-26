@@ -5,7 +5,8 @@ function Modal({ isOpen, onClose, title, content, onAction, actionLabel }) {
 
   return (
     <div className=" fixed inset-0 px-4 py-4 bg-black bg-opacity-50 flex justify-center items-center z-50">
-      <div className="bg-blue-100 rounded-lg relative p-6 max-w-md w-full">
+      <div className="bg-blue-100 rounded-lg relative p-6  w-full">
+      {/* max-w-md */}
       <button
             className=" absolute top-4 right-4 text-gray-900 "
             onClick={onClose} aria-label="Close the pop-up"

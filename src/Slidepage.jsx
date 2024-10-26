@@ -47,7 +47,8 @@ function Slidepage() {
   }, []);
 
   return (
-    <div className="p-4 mt-16 md:p-16" style={{ position: 'relative' }}>
+    <div className="p-4 mt-16 " style={{ position: 'relative' }}>
+      {/* md:p-16 */}
       <Link
         className="text-gray-500 flex items-center font-rem py-2 px-4 py-2 px-4"
         onClick={handleBack}
@@ -58,7 +59,8 @@ function Slidepage() {
         Zurück
       </Link>
 
-      <h2 className="text-lg font-semibold text-blue-900 mt-4 mb-4 text-center sm:text-2xl md:text-3xl">
+      <h2 className="text-lg font-semibold text-blue-900 mt-4 mb-4 text-center sm:text-2xl ">
+      {/* md:text-3xl */}
         {title || "No Title"}
       </h2>
 
@@ -76,7 +78,8 @@ function Slidepage() {
           )}
 
         
-          <div className="text-center p-4 mb-4 flex items-center justify-center h-[40 rem] md:h-[45rem]">
+          <div className="text-center p-4 mb-4 flex items-center justify-center h-[40 rem] ">
+          {/* md:h-[45rem] */}
          
             {slides[currentSlide]} 
           </div>
