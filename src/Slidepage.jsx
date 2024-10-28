@@ -122,7 +122,7 @@ function Slidepage() {
       )}
 
       {isShareOpen && (
-        <div className="fixed bottom-35 rounded-lg left-8 right-8 mt-2 bg-blue-100  z-50">
+        <div className="fixed bottom-35 rounded-lg left-8 right-8 mt-2 bg-blue-100 z-50 md:left-12 right-12 mt-8 md:fixed bottom-20">
           <div className="flex justify-between items-center">
             <p className="text-center text-blue-900 font-rem font-semibold mb-4">
               Share this page:
