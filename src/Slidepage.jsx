@@ -1,9 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, Link} from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useSlideData } from "./SlideContext";
 import { HiOutlineShare } from "react-icons/hi";
-import arrow from './assets/arrow.png'
-import { FaFacebook, FaWhatsapp, FaEnvelope, FaSms, FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import arrow from "./assets/arrow.png";
+import {
+  FaFacebook,
+  FaWhatsapp,
+  FaEnvelope,
+  FaSms,
+  FaChevronLeft,
+  FaChevronRight,
+} from "react-icons/fa";
 
 function Slidepage() {
   const navigate = useNavigate();
@@ -14,7 +21,7 @@ function Slidepage() {
   const [isShareOpen, setIsShareOpen] = useState(false);
 
   const nextSlide = () => {
-    setCurrentSlide((prevSlide) => (prevSlide + 1) % slides.length); 
+    setCurrentSlide((prevSlide) => (prevSlide + 1) % slides.length);
   };
 
   const prevSlide = () => {
@@ -32,9 +39,9 @@ function Slidepage() {
   const toggleShareOptions = () => {
     setIsShareOpen((prev) => {
       if (!prev) {
-        document.body.style.overflow = 'hidden'; 
+        document.body.style.overflow = "hidden";
       } else {
-        document.body.style.overflow = 'auto'; 
+        document.body.style.overflow = "auto";
       }
       return !prev;
     });
@@ -42,31 +49,26 @@ function Slidepage() {
 
   useEffect(() => {
     return () => {
-      document.body.style.overflow = 'auto'; 
+      document.body.style.overflow = "auto";
     };
   }, []);
 
   return (
-    <div className="p-4 mt-16 " style={{ position: 'relative' }}>
-      {/* md:p-16 */}
+    <div className="p-4 mt-16 md:p-16" style={{ position: "relative" }}>
       <Link
         className="text-gray-500 flex items-center font-rem py-2 px-4 py-2 px-4"
         onClick={handleBack}
       >
-         <img className="h-4 w-4"
-      src={arrow}
-      />
+        <img className="h-4 w-4" src={arrow} />
         Zurück
       </Link>
 
-      <h2 className="text-lg font-semibold text-blue-900 mt-4 mb-4 text-center sm:text-2xl ">
-      {/* md:text-3xl */}
+      <h2 className="text-lg font-semibold text-blue-900 mt-4 mb-4 text-center sm:text-2xl md:text-3xl ">
         {title || "No Title"}
       </h2>
 
       {slides && slides.length > 0 ? (
-        <div className="relative">
-        
+        <div className="relative max-w-3xl mx-auto">
           {currentSlide > 0 && (
             <button
               className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700"
@@ -77,13 +79,9 @@ function Slidepage() {
             </button>
           )}
 
-        
-          <div className="text-center p-4 mb-4 flex items-center justify-center h-[40 rem] ">
-          {/* md:h-[45rem] */}
-         
-            {slides[currentSlide]} 
+          <div className="text-center p-4 mb-4 flex items-center justify-center h-[40 rem] md:h-[45rem]">
+            {slides[currentSlide]}
           </div>
-     
 
           {currentSlide < slides.length - 1 && (
             <button
@@ -94,36 +92,34 @@ function Slidepage() {
               <FaChevronRight size={28} />
             </button>
           )}
-        
 
-     
-      <div className="absolute bottom-4 left-0 right-0 flex justify-center items-center space-x-4">
-        <div className="flex p-2 space-x-2">
-          {slides && slides.map((_, index) => (
+          <div className="absolute bottom-4 left-0 right-0 flex justify-center items-center space-x-4">
+            <div className="flex p-2 space-x-2">
+              {slides &&
+                slides.map((_, index) => (
+                  <button
+                    key={index}
+                    className={`h-3 w-3 rounded-full ${
+                      currentSlide === index ? "bg-blue-900" : "bg-gray-300"
+                    }`}
+                    onClick={() => setCurrentSlide(index)}
+                    aria-label={`Go to slide ${index + 1}`}
+                  ></button>
+                ))}
+            </div>
+
             <button
-              key={index}
-              className={`h-3 w-3 rounded-full ${
-                currentSlide === index ? "bg-blue-900" : "bg-gray-300"
-              }`}
-              onClick={() => setCurrentSlide(index)}
-              aria-label={`Go to slide ${index + 1}`}
-            ></button>
-          ))}
+              className="text-customBlue hover:text-gray-700 mx-16"
+              onClick={toggleShareOptions}
+              aria-label="Share this page"
+            >
+              <HiOutlineShare size={28} />
+            </button>
+          </div>
         </div>
-
-        <button
-          className="text-customBlue hover:text-gray-700 mx-16"
-          onClick={toggleShareOptions}
-          aria-label="Share this page"
-        >
-          <HiOutlineShare size={28} />
-        </button>
-      </div>
-      </div>
       ) : (
         <p className="text-center mt-4">No slides available.</p>
       )}
-
 
       {isShareOpen && (
         <div className="fixed bottom-20 rounded-lg left-8 right-8 mt-2 bg-blue-100  z-50">
@@ -131,7 +127,10 @@ function Slidepage() {
             <p className="text-center text-blue-900 font-rem font-semibold mb-4">
               Share this page:
             </p>
-            <button onClick={toggleShareOptions} aria-label="Close share options">
+            <button
+              onClick={toggleShareOptions}
+              aria-label="Close share options"
+            >
               X
             </button>
           </div>
@@ -158,7 +157,7 @@ function Slidepage() {
 
             {/* WhatsApp */}
             <a
-              href="https://wa.me/04915730106001" 
+              href="https://wa.me/04915730106001"
               target="_blank"
               rel="noopener noreferrer"
               className="flex flex-col items-center text-blue-900"
