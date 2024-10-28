@@ -209,7 +209,6 @@ function Startpage() {
                           Wer kann helfen, das festzustellen?
                         </h3>
                         <p className="text-base font-rem leading-relaxed text-left p-2 text-sm sm:text-lg md:text-xl space-y-2 text-customBlue75">
-             
                           Pflegeberater, Hausärzte und Pflegedienste können eine
                           erste Einschätzung vornehmen. Sie bieten Beratung und
                           Unterstützung bei der Beurteilung des Pflegebedarfs
@@ -219,16 +218,19 @@ function Startpage() {
                         </p>
                       </div>
                     </div>,
-                    <div key="slide-4">
-                      <div className="border bg-blue-100 shadow-lg rounded-lg text-center p-4">
-                        <button
-                          className="bg-customBlue text-white font-rem py-2 px-4 rounded-full mt-20 mb-20"
+                          <div key="slide-4">
+                          <div className="border bg-blue-100 h-72 shadow-lg rounded-lg text-center p-4">
+                  
+                            <button
+                          className="bg-customBlue text-center font-rem text-white py-2 px-4 ml-12 rounded-full mt-24 mb-24 "
                           onClick={handleBack}
                         >
                           Zurück zum PflegePfad
                         </button>
-                      </div>
-                    </div>,
+                          
+                          </div>
+                        </div>,
+    
                   ],
                 })
               }

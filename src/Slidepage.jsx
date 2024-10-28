@@ -79,7 +79,7 @@ function Slidepage() {
             </button>
           )}
 
-          <div className="text-center p-4 mb-4 flex items-center justify-center h-[40 rem] md:h-[45rem]">
+          <div className="text-center p-4 mb-4 flex items-center justify-center  h-[40 rem] md:h-[45rem]">
             {slides[currentSlide]}
           </div>
 
@@ -109,7 +109,7 @@ function Slidepage() {
             </div>
 
             <button
-              className="text-customBlue hover:text-gray-700 mx-16"
+              className="text-customBlue hover:text-gray-700 ml-48"
               onClick={toggleShareOptions}
               aria-label="Share this page"
             >
@@ -122,7 +122,7 @@ function Slidepage() {
       )}
 
       {isShareOpen && (
-        <div className="fixed bottom-20 rounded-lg left-8 right-8 mt-2 bg-blue-100  z-50">
+        <div className="fixed bottom-35 rounded-lg left-8 right-8 mt-2 bg-blue-100  z-50">
           <div className="flex justify-between items-center">
             <p className="text-center text-blue-900 font-rem font-semibold mb-4">
               Share this page:
