@@ -157,7 +157,7 @@ function Slidepage() {
 
             {/* WhatsApp */}
             <a
-              href="https://wa.me/04915730106001"
+              href={`https://wa.me/?text=Check out this page: ${url}`}
               target="_blank"
               rel="noopener noreferrer"
               className="flex flex-col items-center text-blue-900"
