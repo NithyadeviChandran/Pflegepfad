@@ -58,7 +58,7 @@ function Slidepage() {
     onSwipedLeft: () => nextSlide(),
     onSwipedRight: () => prevSlide(),
     preventDefaultTouchmoveEvent: true,
-    trackMouse: true, // Allows swipe functionality in browser for testing
+    trackMouse: true, 
   });
 
   return (

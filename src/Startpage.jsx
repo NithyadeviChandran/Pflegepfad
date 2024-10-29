@@ -317,6 +317,18 @@ function Startpage() {
                         </p>
                       </div>
                     </div>,
+                        <div key="slide-4">
+                        <div className="border bg-blue-100 h-72 shadow-lg rounded-lg text-center p-4">
+                
+                          <button
+                        className="bg-customBlue text-center font-rem text-white py-2 px-4 ml-12 rounded-full mt-24 mb-24 "
+                        onClick={handleBack}
+                      >
+                        Zurück zum PflegePfad
+                      </button>
+                        
+                        </div>
+                      </div>,
                   ],
                 })
               }
@@ -406,6 +418,18 @@ function Startpage() {
                         </p>
                       </div>
                     </div>,
+                        <div key="slide-4">
+                        <div className="border bg-blue-100 h-72 shadow-lg rounded-lg text-center p-4">
+                
+                          <button
+                        className="bg-customBlue text-center font-rem text-white py-2 px-4 ml-12 rounded-full mt-24 mb-24 "
+                        onClick={handleBack}
+                      >
+                        Zurück zum PflegePfad
+                      </button>
+                        
+                        </div>
+                      </div>,
                   ],
                 })
               }
@@ -495,6 +519,18 @@ function Startpage() {
                         </p>
                       </div>
                     </div>,
+                        <div key="slide-4">
+                        <div className="border bg-blue-100 h-72 shadow-lg rounded-lg text-center p-4">
+                
+                          <button
+                        className="bg-customBlue text-center font-rem text-white py-2 px-4 ml-12 rounded-full mt-24 mb-24 "
+                        onClick={handleBack}
+                      >
+                        Zurück zum PflegePfad
+                      </button>
+                        
+                        </div>
+                      </div>,
                   ],
                 })
               }
@@ -583,6 +619,18 @@ function Startpage() {
                         </p>
                       </div>
                     </div>,
+                        <div key="slide-4">
+                        <div className="border bg-blue-100 h-72 shadow-lg rounded-lg text-center p-4">
+                
+                          <button
+                        className="bg-customBlue text-center font-rem text-white py-2 px-4 ml-12 rounded-full mt-24 mb-24 "
+                        onClick={handleBack}
+                      >
+                        Zurück zum PflegePfad
+                      </button>
+                        
+                        </div>
+                      </div>,
                   ],
                 })
               }
@@ -669,6 +717,18 @@ function Startpage() {
                         </p>
                       </div>
                     </div>,
+                        <div key="slide-4">
+                        <div className="border bg-blue-100 h-72 shadow-lg rounded-lg text-center p-4">
+                
+                          <button
+                        className="bg-customBlue text-center font-rem text-white py-2 px-4 ml-12 rounded-full mt-24 mb-24 "
+                        onClick={handleBack}
+                      >
+                        Zurück zum PflegePfad
+                      </button>
+                        
+                        </div>
+                      </div>,
                   ],
                 })
               }
@@ -755,13 +815,25 @@ function Startpage() {
                         </p>
                       </div>
                     </div>,
+                        <div key="slide-4">
+                        <div className="border bg-blue-100 h-72 shadow-lg rounded-lg text-center p-4">
+                
+                          <button
+                        className="bg-customBlue text-center font-rem text-white py-2 px-4 ml-12 rounded-full mt-24 mb-24 "
+                        onClick={handleBack}
+                      >
+                        Zurück zum PflegePfad
+                      </button>
+                        
+                        </div>
+                      </div>,
                   ],
                 })
               }
             />
           </div>
 
-          <div className="fixed bottom-16 left-1/2 transform -translate-x-1/2  z-50">
+          <div className="fixed bottom-10 left-1/2 transform -translate-x-1/2  z-50">
             {isAtBottom ? (
               <FaChevronUp
                 size={24}
